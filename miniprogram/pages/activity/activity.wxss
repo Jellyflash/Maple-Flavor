@@ -1,0 +1,99 @@
+/* The attribute of the scroll view. */
+.scroll-view {
+  width: 100%;
+  height: 160rpx; 
+  white-space: nowrap;
+}
+
+.scroll-view view {
+  margin-top: 20rpx;
+  width: 208rpx;
+  height: 117rpx;
+  padding: 0 16rpx;
+  box-sizing: content-box;
+  display: inline-block;
+  position: relative;
+}
+
+.scroll-view view image {
+  width: 208rpx;
+  height: 117rpx;
+  border-radius: 10rpx;
+  opacity: 0.7;
+}
+
+.scroll-view view text {
+  font-size: 28rpx;
+  font-weight: bold;
+  position: absolute; 
+  bottom: 10rpx;
+  left: 25rpx;
+  padding: 8rpx 13rpx;
+  background: rgb(255, 255, 255);
+  border-radius: 10rpx;
+}
+
+/* The attribute of the text before and after user's click */
+.click-before{
+  color: black;
+  text-align: center;
+  margin: auto 0;
+  height: 30rpx;
+  line-height: 30rpx;
+  border-right: 1rpx solid #ECECEC; 
+  flex: 1;
+}
+
+.click-after{
+  color: rgb(52, 190, 100);
+  font-weight: 800;
+}
+
+/* The attribute of the swiper */
+.swiper {
+  height: 1600rpx;
+}
+
+/* The information of the food */
+.card{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  box-shadow: 5rpx 5rpx 0rpx 4rpx #eee;
+  width: 700rpx;
+  height: 220rpx;
+  border-radius: 20rpx;
+  margin-left: 25rpx;
+  margin-top: 40rpx;
+}
+
+.foodImg{
+  width: 204.8rpx;
+  height: 160rpx;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+
+.foodTitle{
+  font-size: 40rpx;
+  position: relative;
+  color: #000000;
+  margin-top: 30rpx;
+  margin-right: 100rpx;
+}
+
+.foodInfo{
+  color:#DDDDDD;
+  font-size: 30rpx;
+}
+
+.price{
+  color: #FF7F00;
+  margin-top: 15rpx;
+}
+
+.arrow{
+  height: 80rpx;
+  width: 80rpx;
+  margin-top: 60rpx;
+}

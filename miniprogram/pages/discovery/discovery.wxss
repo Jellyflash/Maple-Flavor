@@ -1,0 +1,99 @@
+/* The swiper on the top with three slides. */
+.swiper {
+  width: 100%;
+  height: 330rpx;
+  display: block;
+  position: relative;
+  top: 0rpx;
+  background: #f0f0f0;
+}
+.slide {
+  width: 100%;
+  height: inherit;
+}
+
+/* The orange title for new arrival */
+.titleBack{
+  margin-top: 55rpx;
+  /* background-color: rgb(247, 154, 62); */
+  background-color: #51ce0e;
+  height: 80rpx;
+  width: 430rpx;
+  margin-left: 165rpx;
+  border-radius: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: rgb(248, 185, 122) 5px 5px 10px 0px; */
+  box-shadow: rgb(54, 175, 97) 5px 5px 10px 0px;
+}
+
+.title{
+  font-size: 45rpx;
+  color: #FFFFFF;
+}
+
+.newArrivalImg{
+  height: 70rpx;
+  width: 70rpx;
+  margin-left: 10rpx;
+}
+
+/* The information of the new arrived food */
+.card{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  box-shadow: 5rpx 5rpx 0rpx 4rpx #eee;
+  width: 700rpx;
+  height: 220rpx;
+  margin-top: 40rpx;
+  border-radius: 20rpx;
+  margin-left: 25rpx;
+}
+
+.foodImg{
+  width: 204.8rpx;
+  height: 160rpx;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+
+.foodTitle{
+  font-size: 40rpx;
+  position: relative;
+  color: #000000;
+  margin-top: 30rpx;
+  margin-right: 100rpx;
+}
+
+.foodInfo{
+  color:#DDDDDD;
+  font-size: 30rpx;
+}
+
+.price{
+  color: #FF7F00;
+  margin-top: 15rpx;
+}
+
+.arrow{
+  height: 80rpx;
+  width: 80rpx;
+  margin-top: 60rpx;
+}
+
+/* The three categories of food  */
+/* .container1 {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  height: 12px;
+  background-color: #FFFFFF;
+}
+.img{
+  width: 60px;
+  height: 60px;
+  margin-top: 15px;
+} */

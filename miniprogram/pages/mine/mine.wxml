@@ -1,0 +1,31 @@
+<image class="background" src="{{imageUrl2}}"></image>
+<view class="head">
+  <image class="pic" src="{{imageUrl1}}"></image>
+  <view class="name">XXX</view>
+</view>
+<view class="whole">
+  <view class="two">
+    <navigator>
+      <image class="pic3" src="{{imageUrl7}}"></image>
+      <image class="pic2" src="{{imageUrl3}}"></image>
+      <view class="caption">我的金币</view>
+    </navigator>
+    <navigator>
+      <image class="pic3" src="{{imageUrl8}}"></image>
+      <image class="pic2" src="{{imageUrl4}}"></image>
+      <view class="caption">我的收藏</view>
+    </navigator>
+  </view>
+  <view class="two">
+    <navigator>
+      <image class="pic3" src="{{imageUrl9}}"></image>
+      <image class="pic2" src="{{imageUrl5}}"></image>
+      <view class="caption">帮助中心</view>
+    </navigator>
+    <navigator>
+      <image class="pic3" src="{{imageUrl10}}"></image>
+      <image class="pic2" src="{{imageUrl6}}"></image>
+      <view class="caption">关于我们</view>
+      </navigator>
+  </view>
+</view>

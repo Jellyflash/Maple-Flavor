@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/discovery/discovery",
+    "pages/activity/activity",
+    "pages/mine/mine",
+    "pages/new1/new1",
+    "pages/review/review",
+    "pages/material/material"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "枫味 Maple Flavor",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#333C4F",
+    "selectedColor": "#5ae50e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/browse绿.png",
+        "iconPath": "images/browse.png",
+        "pagePath": "pages/discovery/discovery",
+        "text": "发现"
+      },
+      {
+        "selectedIconPath": "images/compass绿.png",
+        "iconPath": "images/compass.png",
+        "pagePath": "pages/activity/activity",
+        "text": "菜品"
+      },
+      {
+        "selectedIconPath": "images/account绿.png",
+        "iconPath": "images/account.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我"
+      }
+    ]
+  }
+}

@@ -1,0 +1,173 @@
+<!--pages/new1/new1.wxml-->
+<view class="back">
+  <image id="img1" src="{{imageUrl1}}"></image>
+  <view class="caption">
+    <view id='text1'>蔬菜沙拉</view>
+    <view id='text2'>￥5元/份</view>
+    <view class="three">
+      <image id="img2" src="{{imageUrl2}}"></image>
+      <image id="img2" catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{imageUrl3}}"></image>
+      <image id="img2" catchtap='handleCollection' wx:if='{{isCollected}}' src="{{imageUrl4}}"></image>
+    </view>
+  </view>
+</view>
+
+<view class='collection_view'>
+  <view class='tabbar_view'>
+    <view bindtap='navbarchange_func' data-current="0" class="nav       {{current==0 ? 'active' : ''}}">
+      <text class="navtext {{current==0 ? 'active' : ''}}">评论          </text>
+    </view>
+    <view bindtap='navbarchange_func' data-current="1" class="nav       {{current==1 ? 'active' : ''}}">
+      <text class="navtext {{current==1 ? 'active' : ''}}">配料          </text>
+    </view>
+  </view>
+  <swiper class='swiper' current="{{current}}" bindchange="swiperitemchange_func">
+    <swiper-item>
+      <view id="totalnum">
+        <text class="text4">150人已评价</text>
+        <view class="b1">
+          <navigator>
+            <image id="img5" src="{{imageUrl5}}"></image>
+            <text id="text5">好评(100)</text>
+          </navigator>
+          <navigator>
+            <image id="img5" src="{{imageUrl5}}"></image>
+            <text id="text5">一般(100)</text>
+          </navigator>
+          <navigator>
+            <image id="img5" src="{{imageUrl5}}"></image>
+            <text id="text5">差评(100)</text>
+          </navigator>
+        </view>
+      
+      <view class="pro-con">
+        <view class="pro-box">
+          <view class="head">
+            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
+            <view class="box">
+              <view class="shead clear">
+                <view class="names fl">username</view>
+              </view>
+            </view>
+          </view>
+          <view class="addr-info">
+            <view class="addr-text">commentcommentcomment</view>
+          </view>
+          <view class="info">
+            <view class="text">
+              <text decode="true">时间：5月23日 21:00</text>
+            </view>
+            <button form-type="deleteComment" class="cancel">删除              </button>
+          </view>
+        </view>
+
+        
+        <view class="pro-box">
+          <view class="head">
+            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
+            <view class="box">
+              <view class="shead clear">
+                <view class="names fl">username</view>
+              </view>
+            </view>
+          </view>
+          <view class="addr-info">
+            <view class="addr-text">commentcommentcomment</view>
+          </view>
+          <view class="info">
+            <view class="text">
+              <text decode="true">时间：5月23日 21:00</text>
+            </view>
+            <button form-type="deleteComment" class="cancel">删除              </button>
+          </view>
+        </view>
+
+        <view class="pro-box">
+          <view class="head">
+            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
+            <view class="box">
+              <view class="shead clear">
+                <view class="names fl">username</view>
+              </view>
+            </view>
+          </view>
+          <view class="addr-info">
+            <view class="addr-text">commentcommentcomment</view>
+          </view>
+          <view class="info">
+            <view class="text">
+              <text decode="true">时间：5月23日 21:00</text>
+            </view>
+            <button form-type="deleteComment" class="cancel">删除              </button>
+          </view>
+        </view>
+
+        <view class="pro-box">
+          <view class="head">
+            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
+            <view class="box">
+              <view class="shead clear">
+                <view class="names fl">username</view>
+              </view>
+            </view>
+          </view>
+          <view class="addr-info">
+            <view class="addr-text">commentcommentcomment</view>
+          </view>
+          <view class="info">
+            <view class="text">
+              <text decode="true">时间：5月23日 21:00</text>
+            </view>
+            <button form-type="deleteComment" class="cancel">删除              </button>
+          </view>
+        </view>
+        
+
+      </view>
+      
+
+</view>
+      
+    </swiper-item>
+    <swiper-item>
+      <view class="parallel">
+        <view id="withpic">
+          <view id="tit">菜\n
+            <view id="ingredients">● 白菜\n</view>
+            <view id="ingredients">● 胡萝卜\n</view>
+            <view id="ingredients">● 青椒\n</view>
+          </view>
+          <image id="img8" src="{{imageUrl8}}"></image>
+        </view>
+        <view id="withpic">
+          <view id="tit">肉\n
+            <view id="ingredients">● 鸡肉\n</view>
+          </view>
+          <image id="img8" src="{{imageUrl9}}"></image>
+        </view>
+      </view>
+      <view class="parallel">
+        <view id="withpic">
+          <view id="tit">酱料\n
+            <view id="ingredients">● 千岛酱\n</view>
+          </view>
+          <image id="img8" src="{{imageUrl10}}"></image>
+        </view>
+        <view id="withpic">
+          <view id="tit">其他\n
+            <view id="ingredients">● 鸡蛋\n</view>
+          </view>
+          <image id="img8" src="{{imageUrl11}}"></image>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<form bindsubmit="submitForm" report-submit="true">
+  <view class="release">
+    <view class="replyinfo2">
+      <textarea placeholder-class="input_null" fixed="true"               maxlength="-1" show-confirm-bar="false" cursor-spacing="15"        auto-height="true" placeholder="请输入回复"                        name="comment"></textarea>
+      <button form-type="submit" class="submit">发送</button>
+    </view>
+  </view>
+</form>

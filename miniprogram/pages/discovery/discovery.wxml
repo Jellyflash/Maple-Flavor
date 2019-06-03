@@ -1,0 +1,51 @@
+<!-- The swiper on the top with three slides. -->
+<swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+  <block wx:for="{{swiperUrl}}" wx:for-index="index">
+    <swiper-item>
+      <image src='{{item.url}}' class='slide'                         mode='aspectFill'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- The orange title for new arrival -->
+<view class="titleBack">
+  <view class="title">新品上市</view>
+  <image class="newArrivalImg" src="{{imageUrl6}}"></image>
+</view>
+
+<!-- The information of the new arrived food  -->
+<view class="card" bindtap='go'>
+  <image class="foodImg" src="{{imageUrl4}}"></image>
+  <view>
+    <view class="foodTitle">蔬菜沙拉</view>
+    <view class="foodInfo">新鲜的水果和蔬菜~</view>
+    <view class="price">￥10</view>
+  </view>
+  <image class="arrow" src="{{imageUrl5}}"></image>
+</view>
+
+<view class="card" bindtap='go'>
+  <image class="foodImg" src="{{imageUrl4}}"></image>
+  <view>
+    <view class="foodTitle">蔬菜沙拉</view>
+    <view class="foodInfo">新鲜的水果和蔬菜~</view>
+    <view class="price">￥10</view>
+  </view>
+  <image class="arrow" src="{{imageUrl5}}"></image>
+</view>
+
+<!-- The three categories of food -->
+<!-- <view class="container1">
+  <navigator>
+     <image class ="img" src="{{imageUrl1}}"></image>
+     <view class='ziti'>清淡低卡</view>
+  </navigator>
+  <navigator>
+    <image class ="img" src="{{imageUrl2}}"></image>
+    <view class='ziti'>能量增肌</view>
+  </navigator>
+  <navigator>
+    <image class ="img" src="{{imageUrl3}}"></image>
+    <view class='ziti'>肉食主义</view>
+  </navigator>
+</view> -->
