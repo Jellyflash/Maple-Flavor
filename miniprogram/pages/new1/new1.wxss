@@ -12,7 +12,7 @@
   margin-top: 40rpx;
   z-index: -1;
 }
-#img2{
+.img2{
   width: 65rpx;
   height: 65rpx;
   margin-right: 25rpx;
@@ -359,4 +359,13 @@
   vertical-align:text-top;
 	font-size: 26rpx;
   margin-left: 10rpx;
+}
+
+.butt{
+  width: 70rpx;
+  height: 70rpx;
+  position: relative;
+  margin-top: -70rpx;
+  margin-left: 85rpx;
+  opacity: 0;
 }

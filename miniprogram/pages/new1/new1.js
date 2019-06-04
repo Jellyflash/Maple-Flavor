@@ -23,88 +23,101 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(option) {
+    var postId = option.id;
+    this.data.currentPostId = postId;
+    var postsCollected = wx.getStorageSync('posts_collected')
+    if (postsCollected) {
+      var postCollected = postsCollected[postId]
+      this.setData({
+        isCollected: postCollected
+      })
+    } else {
+      var postsCollected = {};
+      postsCollected[postId] = false;
+      wx.setStorageSync('posts_collected', postsCollected);
+    }
   },
+
+  handleCollection: function(event) {
+    var postsCollected = wx.getStorageSync('posts_collected');
+    var postCollected = postsCollected[this.data.currentPostId];
+    postCollected = !postCollected;
+    postsCollected[this.data.currentPostId] = postCollected;
+    wx.setStorageSync('posts_collected', postsCollected);
+    this.setData({
+      isCollected: postCollected
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  swiperitemchange_func: function (e) {
+  swiperitemchange_func: function(e) {
 
     var current = e.detail.current
 
-    this.setData({ current: current })
+    this.setData({
+      current: current
+    })
 
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  
-  navbarchange_func: function (e) {
+
+  navbarchange_func: function(e) {
 
     var current = e.currentTarget.dataset.current
 
-    this.setData({ current: current })
+    this.setData({
+      current: current
+    })
 
   },
 
-  // handleCollection() {
-  //   let isCollected = !this.data.isCollected
-  //   this.setData({
-  //     isCollected=isCollected
-  //   })
-  //   wx.showToast({
-  //     title: isCollected ? '收藏成功' : '取消收藏',
-  //     icon: 'success'
-  //   })
-  // },
-  collect() {
-    return this.updatePostData('collect');
-  }
-  
 })
-

@@ -5,9 +5,11 @@
     <view id='text1'>蔬菜沙拉</view>
     <view id='text2'>￥5元/份</view>
     <view class="three">
-      <image id="img2" src="{{imageUrl2}}"></image>
-      <image id="img2" catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{imageUrl3}}"></image>
-      <image id="img2" catchtap='handleCollection' wx:if='{{isCollected}}' src="{{imageUrl4}}"></image>
+    <image class="img2" id='0' catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{imageUrl3}}"></image>
+      <image class="img2" id='1' catchtap='handleCollection' wx:if='{{isCollected}}' src="{{imageUrl4}}"></image>
+      <image class="img2" src="{{imageUrl2}}">
+      </image>
+      <button open-type='share' plain='true' class="butt">hahah</button>
     </view>
   </view>
 </view>
