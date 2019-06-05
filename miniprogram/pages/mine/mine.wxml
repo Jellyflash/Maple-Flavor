@@ -1,9 +1,30 @@
 <image class="background" src="{{imageUrl2}}"></image>
 <view class="head">
-  <image class="pic" src="{{imageUrl1}}"></image>
-  <view class="name">XXX</view>
+  <view class="nametot">
+    <image class="pic" src="{{imageUrl1}}"></image>
+    <view class="name">晴辣辣</view>
+  </view>
+  <view class="navtot">
+    <navigator class="nav">
+      <image class="picnew" src="{{imageUrl3}}"></image>
+      <view class="captionnew">金币</view>
+    </navigator>
+    <navigator class="nav">
+      <image class="picnew" src="{{imageUrl4}}"></image>
+      <view class="captionnew">收藏</view>
+    </navigator>
+    <navigator class="nav">
+      <image class="picnew" src="{{imageUrl5}}"></image>
+      <view class="captionnew">帮助</view>
+    </navigator>
+    <navigator class="nav">
+      <image class="picnew" src="{{imageUrl6}}"></image>
+      <view class="captionnew2">关于我们</view>
+    </navigator>
+  </view>
 </view>
-<view class="whole">
+
+<!-- <view class="whole">
   <view class="two">
     <navigator>
       <image class="pic3" src="{{imageUrl7}}"></image>
@@ -28,4 +49,4 @@
       <view class="caption">关于我们</view>
       </navigator>
   </view>
-</view>
+</view> -->

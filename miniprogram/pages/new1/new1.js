@@ -39,6 +39,7 @@ Page({
     }
   },
 
+  // To allow users remember the page by clicking         the star
   handleCollection: function(event) {
     var postsCollected = wx.getStorageSync('posts_collected');
     var postCollected = postsCollected[this.data.currentPostId];
@@ -48,8 +49,35 @@ Page({
     this.setData({
       isCollected: postCollected
     })
+    wx.showToast({
+      title: postCollected?"收藏成功":"取消成功",
+      duration: 1000,
+      icon: "success",
+    })
   },
 
+  //To enable users to change page by clickng on the     two items
+  navbarchange_func: function (e) {
+    var current = e.currentTarget.dataset.current
+    this.setData({
+      current: current
+    })
+  },
+  //Make the content below move as users click on        the two items
+  swiperitemchange_func: function (e) {
+    var current = e.detail.current
+    this.setData({
+      current: current
+    })
+  },
+
+  // To allow users share the page to his/her friends
+  onShareAppMessage: function () {
+    return {
+      title: '美食分享',
+      path: 'pages/new1/new1',
+    }
+  }, 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -91,33 +119,5 @@ Page({
    */
   onReachBottom: function() {
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  swiperitemchange_func: function(e) {
-
-    var current = e.detail.current
-
-    this.setData({
-      current: current
-    })
-
-  },
-
-  onShareAppMessage: function() {
-
-  },
-
-  navbarchange_func: function(e) {
-
-    var current = e.currentTarget.dataset.current
-
-    this.setData({
-      current: current
-    })
-
-  },
-
+  }, 
 })

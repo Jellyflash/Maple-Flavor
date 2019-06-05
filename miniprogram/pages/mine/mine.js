@@ -3,7 +3,7 @@ Page({
     "imageUrl1": "images/圆.png",
     "imageUrl2": "images/背景.png",
     "imageUrl3": "images/金币.png",
-    "imageUrl4": "images/收藏.png",
+    "imageUrl4": "images/收藏2.png",
     "imageUrl5": "images/帮助中心.png",
     "imageUrl6": "images/关于我们.png", 
     "imageUrl7": "images/正方形1.png",

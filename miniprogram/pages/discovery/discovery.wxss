@@ -75,6 +75,7 @@
 .price{
   color: #FF7F00;
   margin-top: 15rpx;
+  font-size: 40rpx;
 }
 
 .arrow{

@@ -30,10 +30,11 @@
   margin-top: 20rpx;
   position: absolute;
   margin-left: 40rpx;
+  font-size: 45rpx;
 }
 #text2{
   color: white;
-  margin-top: 70rpx;
+  margin-top: 75rpx;
   position: absolute;
   margin-left: 40rpx;
 }
