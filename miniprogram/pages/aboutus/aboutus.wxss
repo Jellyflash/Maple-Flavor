@@ -1,0 +1,36 @@
+/* pages/aboutus/aboutus.wxss */
+page{
+  background-color: #BEEDC7;
+}
+.about{
+  background-color: white;
+  width: 320rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+}
+
+.aboutin{
+  font-size: 55rpx;
+  margin-top: 8rpx;
+  color: black;
+  margin-left: 10rpx;
+  font-weight: bold;
+  letter-spacing: 15rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.back{
+  display: flex;
+  justify-content: center;
+}
+
+.block{
+  height: 500rpx;
+  width: 650rpx;
+  border-radius: 50rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  margin-left: 50rpx;
+}

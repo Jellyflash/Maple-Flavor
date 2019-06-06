@@ -135,15 +135,15 @@
       <view class="parallel">
         <view id="withpic">
           <view id="tit">菜\n
-            <view id="ingredients">● 白菜\n</view>
-            <view id="ingredients">● 胡萝卜\n</view>
-            <view id="ingredients">● 青椒\n</view>
+            <view id="ingredients">• 白菜\n</view>
+            <view id="ingredients">• 胡萝卜\n</view>
+            <view id="ingredients">• 青椒\n</view>
           </view>
           <image id="img8" src="{{imageUrl8}}"></image>
         </view>
         <view id="withpic">
           <view id="tit">肉\n
-            <view id="ingredients">● 鸡肉\n</view>
+            <view id="ingredients">• 鸡肉\n</view>
           </view>
           <image id="img8" src="{{imageUrl9}}"></image>
         </view>
@@ -151,13 +151,13 @@
       <view class="parallel">
         <view id="withpic">
           <view id="tit">酱料\n
-            <view id="ingredients">● 千岛酱\n</view>
+            <view id="ingredients">• 千岛酱\n</view>
           </view>
           <image id="img8" src="{{imageUrl10}}"></image>
         </view>
         <view id="withpic">
           <view id="tit">其他\n
-            <view id="ingredients">● 鸡蛋\n</view>
+            <view id="ingredients">• 鸡蛋\n</view>
           </view>
           <image id="img8" src="{{imageUrl11}}"></image>
         </view>
@@ -168,7 +168,7 @@
 <form bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true"               maxlength="-1" show-confirm-bar="false" cursor-spacing="15"        auto-height="true" placeholder="请输入回复"                        name="comment"></textarea>
+      <textarea placeholder-class="input_null" fixed="true"  show-confirm-bar="false"     placeholder="请输入回复"                        name="comment"></textarea>
       <button form-type="submit" class="submit">发送</button>
     </view>
   </view>

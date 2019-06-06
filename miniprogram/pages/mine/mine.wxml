@@ -2,51 +2,33 @@
 <view class="head">
   <view class="nametot">
     <image class="pic" src="{{imageUrl1}}"></image>
-    <view class="name">晴辣辣</view>
+    <text class="name">晴辣辣</text>
+    <text class="nameunder">\n用户 No.1</text>
   </view>
   <view class="navtot">
-    <navigator class="nav">
-      <image class="picnew" src="{{imageUrl3}}"></image>
-      <view class="captionnew">金币</view>
-    </navigator>
-    <navigator class="nav">
+    <view class="nav">
+      <image class="picnew" src="{{imageUrl3}}" bindtap="notOpen"></image>
+      <view class="captionnew" bindtap="notOpen">金币</view>
+    </view>
+    <view class="nav">
       <image class="picnew" src="{{imageUrl4}}"></image>
       <view class="captionnew">收藏</view>
-    </navigator>
-    <navigator class="nav">
+    </view>
+    <view class="nav">
       <image class="picnew" src="{{imageUrl5}}"></image>
       <view class="captionnew">帮助</view>
-    </navigator>
-    <navigator class="nav">
-      <image class="picnew" src="{{imageUrl6}}"></image>
-      <view class="captionnew2">关于我们</view>
-    </navigator>
+    </view>
+    <view class="nav">
+      <image class="picnew" src="{{imageUrl6}}" bindtap="go"></image>
+      <view class="captionnew2" bindtap="go">关于我们</view>
+    </view>
   </view>
 </view>
-
-<!-- <view class="whole">
-  <view class="two">
-    <navigator>
-      <image class="pic3" src="{{imageUrl7}}"></image>
-      <image class="pic2" src="{{imageUrl3}}"></image>
-      <view class="caption">我的金币</view>
-    </navigator>
-    <navigator>
-      <image class="pic3" src="{{imageUrl8}}"></image>
-      <image class="pic2" src="{{imageUrl4}}"></image>
-      <view class="caption">我的收藏</view>
-    </navigator>
+<view class="headbelow">
+  <view class="send-box">
+    <input bindinput="changeInputValue" class="input" type="text" value="{{inputVal}}" placeholder="请输入留言" placeholder-class="place-input" />
+    <button class="but" type="primary" bindtap="addMsg">
+    <view class="text1">发送</view>
+    </button>
   </view>
-  <view class="two">
-    <navigator>
-      <image class="pic3" src="{{imageUrl9}}"></image>
-      <image class="pic2" src="{{imageUrl5}}"></image>
-      <view class="caption">帮助中心</view>
-    </navigator>
-    <navigator>
-      <image class="pic3" src="{{imageUrl10}}"></image>
-      <image class="pic2" src="{{imageUrl6}}"></image>
-      <view class="caption">关于我们</view>
-      </navigator>
-  </view>
-</view> -->
+</view>

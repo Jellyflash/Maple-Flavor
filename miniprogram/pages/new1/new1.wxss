@@ -248,8 +248,7 @@
  
 .release textarea {
   width: 550rpx;
-  min-height: 34rpx;
-  max-height: 102rpx;
+  height: 36rpx;
   border-width: 15rpx 20rpx; 
   border-style: solid;
   border-color: #fff;
@@ -257,11 +256,6 @@
   font-size: 28rpx;
   background-color: #fff;
   border-radius: 4rpx;
-}
- 
-.text {
-  font-size: 40rpx;
-  color: #c9c9c9;
 }
  
 .cancel {

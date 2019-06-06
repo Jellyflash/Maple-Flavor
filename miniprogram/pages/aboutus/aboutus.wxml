@@ -1,0 +1,14 @@
+<!--pages/aboutus/aboutus.wxml-->
+<view class="back">
+<view class="about">
+  <text class="aboutin">关于我们</text>
+</view>
+</view>
+
+<view class="block">
+
+</view>
+
+<view class="block">
+
+</view>
