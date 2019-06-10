@@ -1,86 +1,22 @@
 <!-- The horizontal scroll view of different categories of food -->
 <scroll-view class="scroll-view" scroll-x>
-  <view data-current="0" bindtap="onTapTag" class="click-before {{current == 0?'click-after':''}}">
-    <image src='{{img1}}'></image>
-    <text>{{name1}}</text>
-  </view>
-
-  <view data-current="1" bindtap="onTapTag" class="click-before {{current == 1?'click-after':''}}">
-    <image src='{{img2}}'></image>
-    <text>{{name2}}</text>
-  </view>
-
-  <view data-current="2" bindtap="onTapTag" class="click-before {{current == 2?'click-after':''}}">
-    <image src='{{img3}}'></image>
-    <text>{{name3}}</text>
-  </view>
-
-  <view data-current="3" bindtap="onTapTag" class="click-before {{current == 3?'click-after':''}}">
-    <image src='{{img4}}'></image>
-    <text>{{name4}}</text>
-  </view>
-
-  <view data-current="4" bindtap="onTapTag" class="click-before {{current == 4?'click-after':''}}">
-    <image src='{{img5}}'></image>
-    <text>{{name5}}</text>
+  <view wx:for="{{scroll}}" data-current="{{index}}" bindtap="onTapTag" class="click-before {{current == index?'click-after':''}}">
+    <image src='{{item.resImg}}'></image>
+    <text>{{item.resName}}</text>
   </view>
 </scroll-view>
 
 <!-- The food information of each category -->
 <swiper class="swiper" current="{{current}}" bindchange="swiperChange">
-  <swiper-item>
+  <swiper-item wx:for="{{menu}}">
     <view class="card" bindtap='go'>
-      <image class="foodImg" src="{{imageUrl4}}"></image>
+      <image class="foodImg" src="{{item.foodImg}}"></image>
       <view>
-        <view class="foodTitle">蔬菜沙拉1</view>
-        <view class="foodInfo">新鲜的水果和蔬菜~</view>
-        <view class="price">￥10</view>
+        <view class="foodTitle">{{item.foodTitle}}</view>
+        <view class="foodInfo">{{item.foodInfo}}</view>
+        <view class="price">{{item.price}}</view>
       </view>
-      <image class="arrow" src="{{imageUrl5}}"></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class="card" bindtap='go'>
-      <image class="foodImg" src="{{imageUrl4}}"></image>
-      <view>
-        <view class="foodTitle">蔬菜沙拉2</view>
-        <view class="foodInfo">新鲜的水果和蔬菜~</view>
-        <view class="price">￥10</view>
-      </view>
-      <image class="arrow" src="{{imageUrl5}}"></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class="card" bindtap='go'>
-      <image class="foodImg" src="{{imageUrl4}}"></image>
-      <view>
-        <view class="foodTitle">蔬菜沙拉3</view>
-        <view class="foodInfo">新鲜的水果和蔬菜~</view>
-        <view class="price">￥10</view>
-      </view>
-      <image class="arrow" src="{{imageUrl5}}"></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class="card" bindtap='go'>
-      <image class="foodImg" src="{{imageUrl4}}"></image>
-      <view>
-        <view class="foodTitle">蔬菜沙拉4</view>
-        <view class="foodInfo">新鲜的水果和蔬菜~</view>
-        <view class="price">￥10</view>
-      </view>
-      <image class="arrow" src="{{imageUrl5}}"></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class="card" bindtap='go'>
-      <image class="foodImg" src="{{imageUrl4}}"></image>
-      <view>
-        <view class="foodTitle">蔬菜沙拉5</view>
-        <view class="foodInfo">新鲜的水果和蔬菜~</view>
-        <view class="price">￥10</view>
-      </view>
-      <image class="arrow" src="{{imageUrl5}}"></image>
+      <image class="arrow" src="{{arrow}}"></image>
     </view>
   </swiper-item>
 </swiper>

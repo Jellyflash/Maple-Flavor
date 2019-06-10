@@ -30,6 +30,16 @@ Page({
     })
   },
 
+  address: function () {
+    var that = this
+    wx.showModal({
+      title: '请联系我们',
+      content: '邮箱地址 xxx@163.com',
+      confirmText: '确认',
+      cancelText: '取消',
+    })
+  },
+
   go: function() {
     wx.navigateTo({
       url: '../aboutus/aboutus',

@@ -15,8 +15,8 @@
       <view class="captionnew">收藏</view>
     </view>
     <view class="nav">
-      <image class="picnew" src="{{imageUrl5}}"></image>
-      <view class="captionnew">帮助</view>
+      <image class="picnew" src="{{imageUrl5}}" bindtap="address"></image>
+      <view class="captionnew" bindtap="address">帮助</view>
     </view>
     <view class="nav">
       <image class="picnew" src="{{imageUrl6}}" bindtap="go"></image>

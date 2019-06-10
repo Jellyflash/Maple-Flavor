@@ -5,6 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    "review": [{
+      rating: '好评',
+      number: '(100)',
+    }, {
+        rating: '一般',
+        number: '(100)',
+      }, {
+        rating: '差评',
+        number: '(100)',
+      }],
+
     "imageUrl1": "images/图片.png",
     "imageUrl2": "images/分享.png",
     "imageUrl3": "images/收藏.png",

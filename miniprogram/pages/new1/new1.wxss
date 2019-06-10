@@ -143,12 +143,14 @@
   justify-content: space-around;
 }
 
+
 #text5{
+ 
   color: white;
   font-size: 28rpx;
   margin-top: 90rpx;
-  margin-left: -140rpx;
-  position: absolute;
+  margin-left: -140rpx; 
+ position: absolute;
 }
 
 .review1{

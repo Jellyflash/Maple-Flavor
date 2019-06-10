@@ -10,28 +10,18 @@
 <!-- The orange title for new arrival -->
 <view class="titleBack">
   <view class="title">新品上市</view>
-  <image class="newArrivalImg" src="{{imageUrl6}}"></image>
+  <image class="newArrivalImg" src="{{newArrival}}"></image>
 </view>
 
 <!-- The information of the new arrived food  -->
-<view class="card" bindtap='go'>
-  <image class="foodImg" src="{{imageUrl4}}"></image>
+<view class="card" bindtap='go' wx:for="{{menu}}">
+  <image class="foodImg" src="{{item.foodImg}}"></image>
   <view>
-    <view class="foodTitle">蔬菜沙拉</view>
-    <view class="foodInfo">新鲜的水果和蔬菜~</view>
-    <view class="price">￥10</view>
+    <view class="foodTitle">{{item.foodTitle}}</view>
+    <view class="foodInfo">{{item.foodInfo}}</view>
+    <view class="price">{{item.price}}</view>
   </view>
-  <image class="arrow" src="{{imageUrl5}}"></image>
-</view>
-
-<view class="card" bindtap='go'>
-  <image class="foodImg" src="{{imageUrl4}}"></image>
-  <view>
-    <view class="foodTitle">蔬菜沙拉</view>
-    <view class="foodInfo">新鲜的水果和蔬菜~</view>
-    <view class="price">￥10</view>
-  </view>
-  <image class="arrow" src="{{imageUrl5}}"></image>
+  <image class="arrow" src="{{arrow}}"></image>
 </view>
 
 <!-- The three categories of food -->

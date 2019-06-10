@@ -1,14 +1,23 @@
 <!--pages/aboutus/aboutus.wxml-->
 <view class="back">
-<view class="about">
-  <text class="aboutin">关于我们</text>
-</view>
-</view>
-
-<view class="block">
-
+  <view class="about">
+    <text class="aboutin">关于我们</text>
+  </view>
 </view>
 
-<view class="block">
+<view class="total">
+  <view class="block1">
+    <view class="tit">我们是谁？</view>
+  </view>
 
+  <view class="block2">
+    <view class="tit">我们为什么做？</view>
+  </view>
 </view>
+
+<view class="decorate">———————</view>
+<view class="decorate2">———————</view>
+<view class="decorate3">———————</view>
+<view class="decorate4">—————</view>
+<view class="decorate5">—————</view>
+<view class="decorate6">—————</view>

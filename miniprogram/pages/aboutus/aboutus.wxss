@@ -1,36 +1,99 @@
 /* pages/aboutus/aboutus.wxss */
 page{
-  background-color: #BEEDC7;
+  /* background-color: rgb(203, 247, 211); */
 }
 .about{
-  background-color: white;
+  
   width: 320rpx;
   height: 90rpx;
   border-radius: 20rpx;
-  margin-top: 30rpx;
+  /* margin-top: 30rpx; */
+
 }
 
 .aboutin{
   font-size: 55rpx;
-  margin-top: 8rpx;
-  color: black;
-  margin-left: 10rpx;
+  margin-top: 16rpx;
+  color: rgb(31, 192, 57);
+  margin-left: 40rpx;
   font-weight: bold;
-  letter-spacing: 15rpx;
+  letter-spacing: 10rpx;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .back{
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
-.block{
+.block1{
   height: 500rpx;
   width: 650rpx;
-  border-radius: 50rpx;
-  background-color: white;
-  margin-top: 30rpx;
-  margin-left: 50rpx;
+  /* border-radius: 50rpx; */
+  border-bottom: 3rpx dashed #dddddd;
+  margin-top: 20rpx;
+}
+
+.block2{
+  height: 500rpx;
+  width: 650rpx;
+  /* border-radius: 50rpx; */
+
+  margin-top: 20rpx;
+}
+
+.total{
+  border-left: 3rpx solid #dddddd;
+  margin-left: 60rpx;
+}
+
+.decorate{
+  position: absolute;
+  z-index:-1;
+  color: rgb(31, 192, 57);
+  margin-top: -466rpx;
+  margin-left: 100rpx;
+}
+
+.decorate2{
+  position: absolute;
+  color: rgb(31, 192, 57);
+  margin-top: -464rpx;
+  margin-left: 100rpx;
+}
+
+.decorate3{
+  position: absolute;
+  color: rgb(31, 192, 57);
+  margin-top: -462rpx;
+  margin-left: 100rpx;
+}
+
+.tit{
+  font-weight: bold;
+  padding: 0rpx 50rpx;
+  font-size: 40rpx;
+}
+
+.decorate4{
+  position: absolute;
+  z-index:-1;
+  color: rgb(31, 192, 57);
+  margin-top: -986rpx;
+  margin-left: 100rpx;
+}
+
+.decorate5{
+  position: absolute;
+  color: rgb(31, 192, 57);
+  margin-top: -984rpx;
+  margin-left: 100rpx;
+}
+
+.decorate6{
+  position: absolute;
+  color: rgb(31, 192, 57);
+  margin-top: -982rpx;
+  margin-left: 100rpx;
 }

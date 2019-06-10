@@ -1,32 +1,58 @@
 // pages/activity/activity.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+  //The initial data of a page
   data: {
-    img1: "images/jiachangcai.jpg",
-    name1: '西餐',
-  
-    img2: "images/kuaishouc.jpg",
-    name2: '韩餐',
+    "scroll": [{
+      resImg: "images/jiachangcai.jpg",
+      resName: '西餐',
+    }, {
+        resImg: "images/kuaishouc.jpg",
+        resName: '韩餐',
+      }, {
+        resImg: "images/chuangyicai.jpg",
+        resName: '面食',
+      }, {
+        resImg: "images/sucai.jpg",
+        resName: '鲁菜',
+      }, {
+        resImg: "images/liangcai.jpg",
+        resName: '清真',
+      }
+    ],
+    
+    "menu": [{
+      foodTitle: '蔬菜沙拉',
+      foodImg: 'images/图片.png',
+      price: '￥10',
+      foodInfo: '新鲜的水果和蔬菜~',
+    }, {
+      foodTitle: '辛拉面',
+      foodImg: 'images/图片.png',
+      price: '￥10',
+      foodInfo: '好吃的拉面~',
+      }, {
+        foodTitle: '蔬菜沙拉',
+        foodImg: 'images/图片.png',
+        price: '￥10',
+        foodInfo: '新鲜的水果和蔬菜~',
+      }, {
+        foodTitle: '辛拉面',
+        foodImg: 'images/图片.png',
+        price: '￥10',
+        foodInfo: '好吃的拉面~',
+      }, {
+        foodTitle: '蔬菜沙拉',
+        foodImg: 'images/图片.png',
+        price: '￥10',
+        foodInfo: '新鲜的水果和蔬菜~',
+      }],
 
-    img3: "images/chuangyicai.jpg",
-    name3: '面食',
-
-    img4: "images/sucai.jpg",
-    name4: '鲁菜',
-  
-    img5: "images/liangcai.jpg",
-    name5: '清真',
-    current: 0,
-    "imageUrl4": "images/图片.png",
-    "imageUrl5": "images/箭头2.png"
+    "arrow": "images/箭头2.png",
+    current: 0,  
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  //To change the navigation bar title on the top
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '食堂菜品展示',

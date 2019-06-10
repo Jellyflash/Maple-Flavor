@@ -5,7 +5,7 @@
     <view id='text1'>蔬菜沙拉</view>
     <view id='text2'>￥5元/份</view>
     <view class="three">
-    <image class="img2" id='0' catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{imageUrl3}}"></image>
+      <image class="img2" id='0' catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{imageUrl3}}"></image>
       <image class="img2" id='1' catchtap='handleCollection' wx:if='{{isCollected}}' src="{{imageUrl4}}"></image>
       <image class="img2" src="{{imageUrl2}}">
       </image>
@@ -25,111 +25,104 @@
   </view>
   <swiper class='swiper' current="{{current}}" bindchange="swiperitemchange_func">
     <swiper-item>
+    <!-- The review summary -->
       <view id="totalnum">
         <text class="text4">150人已评价</text>
         <view class="b1">
-          <navigator>
+          <navigator wx:for="{{review}}">
             <image id="img5" src="{{imageUrl5}}"></image>
-            <text id="text5">好评(100)</text>
-          </navigator>
-          <navigator>
-            <image id="img5" src="{{imageUrl5}}"></image>
-            <text id="text5">一般(100)</text>
-          </navigator>
-          <navigator>
-            <image id="img5" src="{{imageUrl5}}"></image>
-            <text id="text5">差评(100)</text>
+            <text id="text5">{{item.rating}}{{item.number}}</text>
           </navigator>
         </view>
-      
-      <view class="pro-con">
-        <view class="pro-box">
-          <view class="head">
-            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
-            <view class="box">
-              <view class="shead clear">
-                <view class="names fl">username</view>
+
+        <view class="pro-con">
+          <view class="pro-box">
+            <view class="head">
+              <image class="img" src="{{imageUrl6}}" mode="aspectFit"></image>
+              <view class="box">
+                <view class="shead clear">
+                  <view class="names fl">username</view>
+                </view>
               </view>
             </view>
-          </view>
-          <view class="addr-info">
-            <view class="addr-text">commentcommentcomment</view>
-          </view>
-          <view class="info">
-            <view class="text">
-              <text decode="true">时间：5月23日 21:00</text>
+            <view class="addr-info">
+              <view class="addr-text">commentcommentcomment</view>
             </view>
-            <button form-type="deleteComment" class="cancel">删除              </button>
+            <view class="info">
+              <view class="text">
+                <text decode="true">时间：5月23日 21:00</text>
+              </view>
+              <button form-type="deleteComment" class="cancel">删除 </button>
+            </view>
           </view>
+
+
+          <view class="pro-box">
+            <view class="head">
+              <image class="img" src="{{imageUrl6}}" mode="aspectFit"></image>
+              <view class="box">
+                <view class="shead clear">
+                  <view class="names fl">username</view>
+                </view>
+              </view>
+            </view>
+            <view class="addr-info">
+              <view class="addr-text">commentcommentcomment</view>
+            </view>
+            <view class="info">
+              <view class="text">
+                <text decode="true">时间：5月23日 21:00</text>
+              </view>
+              <button form-type="deleteComment" class="cancel">删除 </button>
+            </view>
+          </view>
+
+          <view class="pro-box">
+            <view class="head">
+              <image class="img" src="{{imageUrl6}}" mode="aspectFit"></image>
+              <view class="box">
+                <view class="shead clear">
+                  <view class="names fl">username</view>
+                </view>
+              </view>
+            </view>
+            <view class="addr-info">
+              <view class="addr-text">commentcommentcomment</view>
+            </view>
+            <view class="info">
+              <view class="text">
+                <text decode="true">时间：5月23日 21:00</text>
+              </view>
+              <button form-type="deleteComment" class="cancel">删除 </button>
+            </view>
+          </view>
+
+          <view class="pro-box">
+            <view class="head">
+              <image class="img" src="{{imageUrl6}}" mode="aspectFit"></image>
+              <view class="box">
+                <view class="shead clear">
+                  <view class="names fl">username</view>
+                </view>
+              </view>
+            </view>
+            <view class="addr-info">
+              <view class="addr-text">commentcommentcomment</view>
+            </view>
+            <view class="info">
+              <view class="text">
+                <text decode="true">时间：5月23日 21:00</text>
+              </view>
+              <button form-type="deleteComment" class="cancel">删除 </button>
+            </view>
+          </view>
+
+
         </view>
 
-        
-        <view class="pro-box">
-          <view class="head">
-            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
-            <view class="box">
-              <view class="shead clear">
-                <view class="names fl">username</view>
-              </view>
-            </view>
-          </view>
-          <view class="addr-info">
-            <view class="addr-text">commentcommentcomment</view>
-          </view>
-          <view class="info">
-            <view class="text">
-              <text decode="true">时间：5月23日 21:00</text>
-            </view>
-            <button form-type="deleteComment" class="cancel">删除              </button>
-          </view>
-        </view>
-
-        <view class="pro-box">
-          <view class="head">
-            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
-            <view class="box">
-              <view class="shead clear">
-                <view class="names fl">username</view>
-              </view>
-            </view>
-          </view>
-          <view class="addr-info">
-            <view class="addr-text">commentcommentcomment</view>
-          </view>
-          <view class="info">
-            <view class="text">
-              <text decode="true">时间：5月23日 21:00</text>
-            </view>
-            <button form-type="deleteComment" class="cancel">删除              </button>
-          </view>
-        </view>
-
-        <view class="pro-box">
-          <view class="head">
-            <image class="img" src="{{imageUrl6}}"                              mode="aspectFit"></image>
-            <view class="box">
-              <view class="shead clear">
-                <view class="names fl">username</view>
-              </view>
-            </view>
-          </view>
-          <view class="addr-info">
-            <view class="addr-text">commentcommentcomment</view>
-          </view>
-          <view class="info">
-            <view class="text">
-              <text decode="true">时间：5月23日 21:00</text>
-            </view>
-            <button form-type="deleteComment" class="cancel">删除              </button>
-          </view>
-        </view>
-        
 
       </view>
-      
 
-</view>
-      
     </swiper-item>
     <swiper-item>
       <view class="parallel">
@@ -168,7 +161,7 @@
 <form bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true"  show-confirm-bar="false"     placeholder="请输入回复"                        name="comment"></textarea>
+      <textarea placeholder-class="input_null" fixed="true" show-confirm-bar="false" placeholder="请输入回复" name="comment"></textarea>
       <button form-type="submit" class="submit">发送</button>
     </view>
   </view>

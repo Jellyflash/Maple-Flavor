@@ -4,8 +4,6 @@
     "pages/activity/activity",
     "pages/mine/mine",
     "pages/new1/new1",
-    "pages/review/review",
-    "pages/material/material",
     "pages/aboutus/aboutus"
   ],
   "window": {
