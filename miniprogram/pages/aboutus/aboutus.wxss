@@ -1,6 +1,6 @@
 /* pages/aboutus/aboutus.wxss */
 page{
-  /* background-color: rgb(203, 247, 211); */
+  /* background-color: rgb(227, 247, 231); */
 }
 .about{
   

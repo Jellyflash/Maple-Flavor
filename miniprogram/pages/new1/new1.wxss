@@ -1,10 +1,5 @@
-/* pages/new1/new1.wxss */
-.back{
-  background-color: rgb(226, 227, 235);
-  width: 100%;
-  height: 430rpx;
-}
-#img1{
+/* The picture and title on the top */
+.foodImg{
   width: 670rpx;
   height: 350rpx;
   margin-left: 40rpx;
@@ -12,12 +7,7 @@
   margin-top: 40rpx;
   z-index: -1;
 }
-.img2{
-  width: 65rpx;
-  height: 65rpx;
-  margin-right: 25rpx;
-}
-.caption{
+.titleBackground{
   background-color: #686363;
   width: 100%;
   height: 140rpx;
@@ -25,60 +15,41 @@
   display: flex;
   flex-direction: row;
 }
-#text1{
+.foodTitle{
   color: white;
   margin-top: 20rpx;
   position: absolute;
   margin-left: 40rpx;
   font-size: 45rpx;
 }
-#text2{
+.price{
   color: white;
   margin-top: 75rpx;
   position: absolute;
   margin-left: 40rpx;
 }
-.three{
+
+/* The star and share on the top right */
+.iconArray{
   margin-left: 550rpx;
   margin-top: 40rpx;
 }
-#text3{
-  margin-top: 10rpx;
-  color: white;
-  font-size: 35rpx;
+.icon{
+  width: 65rpx;
+  height: 65rpx;
+  margin-right: 25rpx;
 }
-.u-wrp-bnr {
-  width: 100%;
+.shareButton{
+  width: 70rpx;
   height: 70rpx;
-  background: rgba(15, 136, 15, 0.61);
-  display: block;
   position: relative;
-  top: 0rpx;
+  margin-top: -70rpx;
+  margin-left: 85rpx;
+  opacity: 0;
 }
 
-.container {
-  height: 100%;
-  min-height: 600rpx;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
 
-.title {
-  width: 100%;
-  height: 88rpx;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.collection_view {
-  display: flex;
-  flex-direction: column;
-}
- 
-.tabbar_view {
+.tabBar {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -194,13 +165,13 @@
   position: absolute;
 }
 
-#ingredients{
+.ingredients{
   margin-top: 10rpx;
   margin-left: 30rpx;
   font-size: 30rpx;
 }
 
-#tit{
+.tit{
   margin-top: 30rpx;
   margin-left: -140rpx;
   font-size: 35rpx;
@@ -212,11 +183,11 @@
   justify-content: space-around;
 }
 
-#withpic{
+.withpic{
   display: flex;
 }
 
-#img8{
+.img8{
   height: 128rpx;
   width: 128rpx;
   position: absolute;
@@ -358,11 +329,4 @@
   margin-left: 10rpx;
 }
 
-.butt{
-  width: 70rpx;
-  height: 70rpx;
-  position: relative;
-  margin-top: -70rpx;
-  margin-left: 85rpx;
-  opacity: 0;
-}
+

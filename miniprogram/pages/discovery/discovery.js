@@ -16,11 +16,13 @@ Page({
       foodImg: 'images/图片.png',
       price: '￥10',
       foodInfo: '新鲜的水果和蔬菜~',
-    }, {
+      index: 0,
+          }, {
         foodTitle: '辛拉面',
         foodImg: 'images/图片.png',
         price: '￥10',
         foodInfo: '好吃的拉面~',
+        index: 1,
     }],
 
     "arrow": "images/箭头.png",
@@ -31,9 +33,10 @@ Page({
   },
 
   // To change the page into the detail food information page
-  go: function () {
+  go: function (e) {
+    var food = e.currentTarget.id;
     wx.navigateTo({
-      url: '../new1/new1',
+      url: '../new1/new1?food=' + food,
     })
   },
 
