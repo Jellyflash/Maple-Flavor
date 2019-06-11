@@ -23,19 +23,3 @@
   </view>
   <image class="arrow" src="{{arrow}}"></image>
 </view>
-
-<!-- The three categories of food -->
-<!-- <view class="container1">
-  <navigator>
-     <image class ="img" src="{{imageUrl1}}"></image>
-     <view class='ziti'>清淡低卡</view>
-  </navigator>
-  <navigator>
-    <image class ="img" src="{{imageUrl2}}"></image>
-    <view class='ziti'>能量增肌</view>
-  </navigator>
-  <navigator>
-    <image class ="img" src="{{imageUrl3}}"></image>
-    <view class='ziti'>肉食主义</view>
-  </navigator>
-</view> -->

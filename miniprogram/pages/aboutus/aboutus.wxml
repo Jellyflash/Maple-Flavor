@@ -15,15 +15,15 @@
   </view>
 </view>
 
-<<<<<<< HEAD
+
 <view class="decorate">———————</view>
 <view class="decorate2">———————</view>
 <view class="decorate3">———————</view>
 <view class="decorate4">—————</view>
 <view class="decorate5">—————</view>
 <view class="decorate6">—————</view>
-=======
+
 <view class="block">
 
 </view>
->>>>>>> getUserID
+

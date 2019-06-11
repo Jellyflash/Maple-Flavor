@@ -22,20 +22,17 @@ App({
         traceUser: true,
         env: 'mapleflavor-2019'
       })
-      //获取用户ID
-      this.getOpenid();
+      //get user ID
+      // this.getOpenid();
 
-      // 查看是否授权
+      // check if give permission
       wx.getSetting({
         success(res) {
           if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            // get user information
             wx.getUserInfo({
               success: function(res) {
                 console.log(res.userInfo)
-                wx.navigateTo({
-                  url: '../login/login',
-                })
               }
             })
           } else {
@@ -46,20 +43,5 @@ App({
         }
       })
     }
-  },
-  getOpenid() {
-    let that = this;
-    wx.cloud.callFunction({
-      name: 'getID',
-      complete: res => {
-        console.log('云函数result: ', res)
-        console.log('云函数获取到的openid: ', res.result.openid)
-        this.globalData.openid = res.result.openid;
-        wx.setStorage({
-          key: 'openID',
-          data: res.result.openid,
-        })
-      }
-    })
   }
 })
