@@ -15,7 +15,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.5",
+	"libVersion": "2.7.1",
 	"appid": "wxeafabd5441f7e2da",
 	"projectname": "MapleFlavor",
 	"cloudfunctionTemplateRoot": "",

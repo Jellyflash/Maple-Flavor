@@ -3,6 +3,7 @@ Page({
   
   //The initial data of a page
   data: {
+    openid: '',
     "swiperUrl": [{
       "url": "images/轮播1.jpg"
     }, {
@@ -42,6 +43,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '发现',
     })
+    
   },
 
   /**
@@ -91,5 +93,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })

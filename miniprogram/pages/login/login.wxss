@@ -1,0 +1,11 @@
+.loginButton{
+  width: 90%;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  height: 400rpx;
+  justify-content: space-around; 
+  align-items: center;
+}
