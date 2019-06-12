@@ -1,5 +1,6 @@
 <view class='login'>
   <view>欢迎来到枫味Maple Flavor!</view>
+  <view>为了更好的用户体验（评论&收藏），请您授权小程序</view>
   <button wx:if="{{canIUse}}" open-type="getUserInfo" type="primary" bindgetuserinfo="bindGetUserInfo" class="loginButton">授权使用</button>
   <view wx:else>请升级微信版本以使用小程序</view>
 </view>

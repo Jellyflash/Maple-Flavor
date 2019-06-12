@@ -4,8 +4,7 @@
 
 .login{
   display: flex;
-  flex-direction: column;
-  height: 400rpx;
+  flex-direction: row;
   justify-content: space-around; 
   align-items: center;
 }

@@ -53,6 +53,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getID',
       complete: res => {
+        //set user id
         app.globalData.openid = res.result.openid
         console.log('云函数获取到的openid: ', app.globalData.openid)
         this.setData({
@@ -67,22 +68,71 @@ Page({
   checkID() {
     console.log('print', this.data.openid)
     const db = wx.cloud.database()
-    db.collection('user').where({
+    
+    //check if manager
+    db.collection('manager').where({
       _openid: this.data.openid
     }).get({
-      success: res => {
-        // this.setData({
-        //   queryResult: JSON.stringify(res.data, null, 2)
-        // })
-        console.log('[数据库] [查询记录] 成功: ', res)
+      success:res =>{
+        if(res.data.length>0){
+          app.globalData.mangager = true
+          console.log('Manager', app.globalData.mangager)
+        }
+        this.guide()
       },
       fail: err => {
         wx.showToast({
           icon: 'none',
-          title: '查询记录失败'
+          title: '管理员查询记录失败'
         })
-        console.error('[数据库] [查询记录] 失败：', err)
+        console.error('[数据库] [管理员查询记录] 失败：', err)
       }
     })
+
+  
+    db.collection('user').where({
+      _openid: this.data.openid
+    }).get({
+      success: res => {
+        this.guide()
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '普通用户查询记录失败'
+        })
+        console.error('[数据库] [普通用户查询记录] 失败：', err)
+      }
+    })
+  },
+
+  guide(){
+    if (res.data.length > 0) {
+      console.log('已注册: ', res)
+      wx.getSetting({
+        success: res => {
+          if (!res.authSetting['scope.userInfo']) {
+            // if already give permission, use information directly
+            wx.navigateTo({
+              url: '../login/login',
+            })
+          }
+        }
+      })
+    } else {
+      console.log('未注册', res)
+      db.collection('user').add({
+        data: {
+          name: '',
+          grade: '',
+          bookmark: []
+        },
+        success: function (res) {
+          wx.navigateTo({
+            url: '../login/login',
+          })
+        }
+      })
+    }
   }
 })

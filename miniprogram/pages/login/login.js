@@ -16,7 +16,21 @@ Page({
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo)
     if(e.detail.userInfo){
-      let that = this;
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            auth = true;
+            wx.getUserInfo({
+              success: res => {
+                app.globalData.avatarUrl = res.userInfo.avatarUrl
+                app.globalData.userInfo = res.userInfo
+                console.log('头像', app.globalData.avatarUrl)
+                console.log('用户信息', app.globalData.userInfo)
+              }
+            })
+          }
+        }
+      })
       wx.switchTab({
         url: '../discovery/discovery',
       })

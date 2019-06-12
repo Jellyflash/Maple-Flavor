@@ -23,6 +23,7 @@
   width: 100rpx;
   margin-top: 30rpx;
   margin-left: 30rpx;
+  border-radius: 50%;
 }
 
 .pic2{
@@ -43,7 +44,7 @@
 }
 
 .name{
-  margin-top: 30rpx;
+  margin-top: 50rpx;
   margin-left: 40rpx;
   color: black;
   font-size: 35rpx;
@@ -102,12 +103,12 @@
   margin-left: 60rpx;
 }
 
-.nameunder{
+/* .nameunder{
   margin-top: 45rpx;
   margin-left: -100rpx;
   color: grey;
   font-size: 28rpx;
-}
+} */
 
 .headbelow{
   width: 700rpx;
@@ -144,4 +145,12 @@ page{
   width:120rpx;
   height: 70rpx;
   margin-left: 550rpx;
+}
+
+//mangaer setting
+.managerChoice{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  align-items: center;
 }

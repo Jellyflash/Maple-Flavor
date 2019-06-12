@@ -1,9 +1,8 @@
 <image class="background" src="{{imageUrl2}}"></image>
 <view class="head">
   <view class="nametot">
-    <image class="pic" src="{{imageUrl1}}"></image>
-    <text class="name">晴辣辣</text>
-    <text class="nameunder">\n用户 No.1</text>
+    <image class="pic" src="{{avatar}}" ></image>
+    <text class="name">{{name}}</text>
   </view>
   <view class="navtot">
     <view class="nav">
@@ -24,8 +23,13 @@
     </view>
   </view>
 </view>
-<view class="headbelow">
-  <view class="send-box">
+<view wx:if="{{manager}}" class="managerChoice">
+  <button type="primary">管理员版本</button>
+  <button type="primary">普通用户版本</button>
+</view>
+
+<view wx:else class="headbelow">
+<view class="send-box">
     <input bindinput="changeInputValue" class="input" type="text" value="{{inputVal}}" placeholder="请输入留言" placeholder-class="place-input" />
     <button class="but" type="primary" bindtap="addMsg">
     <view class="text1">发送</view>
