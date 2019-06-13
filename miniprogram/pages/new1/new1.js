@@ -28,11 +28,30 @@ Page({
       index: 1,
     }],
 
+    "content": [{
+      username: '晴辣辣',
+      commentContent: '好吃',
+      time: '5月23日 21:00'
+    }, {
+        username: '阮健康',
+        commentContent: '不好吃',
+        time: '5月29日 8:00'
+      }, {
+        username: '晴甜甜',
+        commentContent: '超好吃',
+        time: '5月26日 8:00'
+      }],
+
     "share": "images/分享.png",
     "starBefore": "images/收藏.png",
     "starAfter": "images/收藏黄.png",
-    "imageUrl5": "images/Rectangle.png",
-    "imageUrl6": "images/圆.png",
+    "greenRectangle": "images/Rectangle.png",
+    "profilePhoto": "images/圆.png",
+    "textReview": '评论',
+    "spice": '配料',
+    "number": '150',
+    "numberText": '人已评价',
+    "cancel": '删除',
     "imageUrl7": "images/评分.png",
     "imageUrl8": "images/菜.png",
     "imageUrl9": "images/肉.png",
@@ -88,7 +107,7 @@ Page({
   },
 
   //Make the content below move as users click on        the two items
-  swiperitemchange_func: function (e) {
+  swiperChange: function (e) {
     var current = e.detail.current
     this.setData({
       current: current

@@ -1,34 +1,29 @@
-<image class="background" src="{{imageUrl2}}"></image>
-<view class="head">
-  <view class="nametot">
-    <image class="pic" src="{{imageUrl1}}"></image>
-    <text class="name">晴辣辣</text>
-    <text class="nameunder">\n用户 No.1</text>
+<!-- the green background image -->
+<image class="background" src="{{greenBack}}"></image>
+
+<!-- The top part of the page -->
+<view class="user">
+  <!-- The user information -->
+  <view class="userInfo">
+    <image class="profile" src="{{profilePic}}"></image>
+    <text class="username">{{username}}</text>
+    <text class="usernum">\n{{beforeNum}}{{userNum}}</text>
   </view>
-  <view class="navtot">
-    <view class="nav">
-      <image class="picnew" src="{{imageUrl3}}" bindtap="notOpen"></image>
-      <view class="captionnew" bindtap="notOpen">金币</view>
-    </view>
-    <view class="nav">
-      <image class="picnew" src="{{imageUrl4}}"></image>
-      <view class="captionnew">收藏</view>
-    </view>
-    <view class="nav">
-      <image class="picnew" src="{{imageUrl5}}" bindtap="address"></image>
-      <view class="captionnew" bindtap="address">帮助</view>
-    </view>
-    <view class="nav">
-      <image class="picnew" src="{{imageUrl6}}" bindtap="go"></image>
-      <view class="captionnew2" bindtap="go">关于我们</view>
+  <!-- The four icons under the username -->
+  <view class="iconTotal">
+    <view class="icon" wx:key="key" wx:for="{{icon}}">
+      <image class="iconImg" src="{{item.img}}" bindtap="notOpen"></image>
+      <view class="iconName" bindtap="notOpen">{{item.name}}</view>
     </view>
   </view>
 </view>
-<view class="headbelow">
-  <view class="send-box">
+
+<!-- The message board below -->
+<view class="send">
+  <view class="sendbox">
     <input bindinput="changeInputValue" class="input" type="text" value="{{inputVal}}" placeholder="请输入留言" placeholder-class="place-input" />
-    <button class="but" type="primary" bindtap="addMsg">
-    <view class="text1">发送</view>
+    <button class="button" type="primary" bindtap="addMsg">
+      <view class="sent">{{sent}}</view>
     </button>
   </view>
 </view>

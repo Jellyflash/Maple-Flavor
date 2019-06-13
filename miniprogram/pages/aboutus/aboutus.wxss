@@ -1,17 +1,12 @@
-/* pages/aboutus/aboutus.wxss */
-page{
-  /* background-color: rgb(227, 247, 231); */
+/* The biggest title */
+.titleDisplay{
+  display: flex;
+  justify-content: left;
 }
-.about{
-  
+.title{
   width: 320rpx;
   height: 90rpx;
   border-radius: 20rpx;
-  /* margin-top: 30rpx; */
-
-}
-
-.aboutin{
   font-size: 55rpx;
   margin-top: 16rpx;
   color: rgb(31, 192, 57);
@@ -22,78 +17,52 @@ page{
   justify-content: left;
 }
 
-.back{
-  display: flex;
-  justify-content: left;
-}
-
-.block1{
-  height: 500rpx;
-  width: 650rpx;
-  /* border-radius: 50rpx; */
-  border-bottom: 3rpx dashed #dddddd;
-  margin-top: 20rpx;
-}
-
-.block2{
-  height: 500rpx;
-  width: 650rpx;
-  /* border-radius: 50rpx; */
-
-  margin-top: 20rpx;
-}
-
-.total{
+/* Two blocks of texts */
+.wholeBlock{
   border-left: 3rpx solid #dddddd;
   margin-left: 60rpx;
 }
-
-.decorate{
-  position: absolute;
-  z-index:-1;
-  color: rgb(31, 192, 57);
-  margin-top: -466rpx;
-  margin-left: 100rpx;
+.block1{
+  height: 480rpx;
+  width: 650rpx;
+  border-bottom: 3rpx dashed #dddddd;
+  margin-top: 20rpx;
 }
-
-.decorate2{
-  position: absolute;
-  color: rgb(31, 192, 57);
-  margin-top: -464rpx;
-  margin-left: 100rpx;
+.block2{
+  height: 500rpx;
+  width: 650rpx;
+  margin-top: 20rpx;
 }
-
-.decorate3{
-  position: absolute;
-  color: rgb(31, 192, 57);
-  margin-top: -462rpx;
-  margin-left: 100rpx;
-}
-
-.tit{
+.smallTitle{
   font-weight: bold;
   padding: 0rpx 50rpx;
   font-size: 40rpx;
 }
-
-.decorate4{
-  position: absolute;
-  z-index:-1;
-  color: rgb(31, 192, 57);
-  margin-top: -986rpx;
-  margin-left: 100rpx;
+.whoAreWe, .why{
+  padding: 10rpx 30rpx;
+  margin-left: 30rpx;
+  font-size: 35rpx;
+  margin-top: 50rpx;
+  background-color: rgb(227, 247, 231);
+  border-radius: 20rpx;
+  line-height: 60rpx;
 }
 
-.decorate5{
+/* The two decorate lines */
+.decorateLine1{
+  height: 8rpx;
+  width: 200rpx;
+  background-color: rgb(31, 192, 57);
   position: absolute;
-  color: rgb(31, 192, 57);
-  margin-top: -984rpx;
   margin-left: 100rpx;
+  margin-top: -940rpx;
 }
 
-.decorate6{
+.decorateLine2{
+  height: 8rpx;
+  width: 280rpx;
+  background-color: rgb(31, 192, 57);
   position: absolute;
-  color: rgb(31, 192, 57);
-  margin-top: -982rpx;
   margin-left: 100rpx;
+  margin-top: -440rpx;
 }
