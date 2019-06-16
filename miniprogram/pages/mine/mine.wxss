@@ -2,7 +2,7 @@
   width: 100%;
   height: 320rpx;
   z-index: -1;
-  position: fixed; 
+  position: absolute; 
   background-size: 100% 100%;
 }
 
@@ -12,9 +12,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  position: absolute;
   margin-top: 80rpx;
-  margin-left: 25rpx;
   box-shadow: 0 0 10rpx 3rpx rgb(230, 227, 227);
 }
 
@@ -111,14 +109,13 @@
 } */
 
 .headbelow{
-  width: 700rpx;
+  width: 700rpx; 
+  margin-left: 25rpx;
+  margin-top: 25rpx;
   height: 500rpx;
   display: flex;
   flex-direction: column;
   background-color: white;
-  position: absolute;
-  margin-top: 420rpx;
-  margin-left: 25rpx;
   box-shadow: 0 0 10rpx 3rpx rgb(232, 233, 239);
 }
 
@@ -147,10 +144,80 @@ page{
   margin-left: 550rpx;
 }
 
-//mangaer setting
+/*mangaer setting*/
 .managerChoice{
+  padding: 20rpx;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around; 
+  justify-items: center;
+  margin-top: 20rpx;
+  border-bottom: 5rpx;
+}
+
+.container{
+  position: relative;
+}
+
+
+.infoContainer{
+  margin: 20rpx 40rpx;
+  /* border-radius: 20rpx;
+  position: relative;
+  display: felx;
+  align-content: flex-end; */
+}
+
+.infoTitle{
+  font-size: 35rpx;
+  border-bottom: 5rpx solid lightgreen;
+  display: inline;
+}
+
+.managerControl{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  /* width: 60%; */
+  display: flex;
   align-items: center;
+}
+
+.manager{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center; */
+  padding: 40rpx;
+}
+
+.managerInput{
+  background-color: white;
+  padding: 20rpx;
+}
+
+.managerButton1{
+  display: inline;
+  margin-left: 20rpx;
+}
+
+.buttonComb1{
+  margin-left: 370rpx;
+}
+
+/* .managerForm{
+  margin-top: 20 rpx;
+} */
+
+.individualContainer{
+  margin-top: 80rpx;
+}
+
+.uploadPhoto{
+  margin-top: 20rpx;
+  background-color: lightgrey;
+}
+
+.dishImage{
+  margin-top: 20rpx;
+  width: 590rpx;
 }

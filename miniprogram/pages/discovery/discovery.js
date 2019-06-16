@@ -45,10 +45,11 @@ Page({
     wx.setNavigationBarTitle({
       title: '发现',
     })
-    this.getOpenid();
+
+    // this.getOpenid()
   },
 
-  getOpenid: function() {
+  getOpenid: function () {
     //call cloud function
     wx.cloud.callFunction({
       name: 'getID',
@@ -68,15 +69,15 @@ Page({
   checkID() {
     console.log('print', this.data.openid)
     const db = wx.cloud.database()
-    
+
     //check if manager
     db.collection('manager').where({
       _openid: this.data.openid
     }).get({
-      success:res =>{
-        if(res.data.length>0){
-          app.globalData.mangager = true
-          console.log('Manager', app.globalData.mangager)
+      success: res => {
+        if (res.data.length > 0) {
+          app.globalData.manager = true
+          console.log('Manager', app.globalData.manager)
         }
         this.guide()
       },
@@ -89,12 +90,12 @@ Page({
       }
     })
 
-  
+    //check common user
     db.collection('user').where({
       _openid: this.data.openid
     }).get({
       success: res => {
-        this.guide()
+        this.guide(res)
       },
       fail: err => {
         wx.showToast({
@@ -106,20 +107,30 @@ Page({
     })
   },
 
-  guide(){
+
+  guide(res) {
+    //already registered
     if (res.data.length > 0) {
       console.log('已注册: ', res)
       wx.getSetting({
         success: res => {
-          if (!res.authSetting['scope.userInfo']) {
-            // if already give permission, use information directly
-            wx.navigateTo({
-              url: '../login/login',
+          if (res.authSetting['scope.userInfo']) {
+            wx.getUserInfo({
+              success: (res) => {
+                if (res.userInfo) {
+                  app.globalData.avatar = res.userInfo.avatarUrl
+                  app.globalData.name = res.userInfo.nickName
+                  console.log('头像', app.globalData.avatar)
+                  console.log('用户信息', app.globalData.name)
+                }
+              }
             })
+
           }
         }
       })
     } else {
+      //not registered
       console.log('未注册', res)
       db.collection('user').add({
         data: {
@@ -134,5 +145,5 @@ Page({
         }
       })
     }
-  }
+  },
 })

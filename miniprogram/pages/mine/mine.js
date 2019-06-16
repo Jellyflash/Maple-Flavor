@@ -1,4 +1,9 @@
 const app = getApp()
+
+const pages = getCurrentPages()
+const perpage = pages[pages.length - 1]
+// perpage.onLoad() 
+
 Page({
   data: {
     "imageUrl2": "images/背景2.png",
@@ -12,38 +17,38 @@ Page({
     "imageUrl10": "images/正方形4.png",
     msgData: [],
     inputVal: "",
-    avatar:'images/圆.png',
-    name:'路人甲'
+    avatar: '',
+    name: '',
+    manager: false,
+    openid: '',
+    searchInfo: '',
+    cleanName: '',
+    newFileID: '',
+    newCloudPath: '',
+    ifDishPhoto:false,
+    newSwiperID:'',
+    newSwiperCloudPath:'',
+    ifSwiperPhoto: false
   },
 
   onLoad: function(options) {
     wx.setNavigationBarTitle({
       title: '我的',
     })
-
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatar: res.userInfo.avatarUrl,
-                name: res.userInfo.nickName,
-                manager: app.globalData.manager
-              })
-              app.globalData.avatarUrl = res.userInfo.avatarUrl
-              app.globalData.userInfo = res.userInfo
-              console.log('头像', app.globalData.avatarUrl)
-              console.log('用户信息', app.globalData.userInfo)
-            }
-          })
-        }
-      }
-    })
-    
-    
   },
 
+  onShow: function() {
+    this.setData({
+      manager: app.globalData.manager,
+      avatar: app.globalData.avatar,
+      name: app.globalData.name
+    })
+  },
+
+  onPullDownRefresh: function() {
+    this.onShow()
+    wx.stopPullDownRefresh()
+  },
   notOpen: function() {
     var that = this
     wx.showModal({
@@ -54,7 +59,7 @@ Page({
     })
   },
 
-  address: function () {
+  address: function() {
     var that = this
     wx.showModal({
       title: '请联系我们',
@@ -75,4 +80,253 @@ Page({
       inputVal: ev.detail.value
     })
   },
+
+  // search a specific dish
+  searchDish: function(e) {
+    let that = this;
+    let searchDishName = e.detail.value.searchDishName;
+    console.log('查询菜品名称：', searchDishName);
+    const db = wx.cloud.database();
+    db.collection('dish').where({
+      dish_name: searchDishName
+    }).get({
+      success: function(res) {
+        if (res.data.length > 0) {
+          console.log('查询菜品成功', res)
+          let dishInfo = res
+          wx.showModal({
+            title: '菜品信息',
+            content: res,
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
+          })
+        } else {
+          console.log('没有此菜品', res)
+          wx.showModal({
+            title: '提示',
+            content: '没有此菜品',
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
+          })
+        }
+        that.setData({
+          cleanName: ''
+        })
+      },
+      fail: function(err) {
+        console.log('查询失败', err)
+        wx.showToast({
+          icon: 'none',
+          title: '查询失败，请检查网络设置'
+        })
+      }
+    })
+  },
+
+  //create a new dish in database
+  createNewDish: function(e) {
+    let that = this;
+    let newName = e.detail.value.newName
+    let newPrice = e.detail.value.newPrice
+    let newMaterial = e.detail.value.newMaterial
+    let newPhotoID = that.data.newFileID
+    console.log('创建新品：', newName, newPrice, newMaterial, newPhotoID);
+    const db = wx.cloud.database();
+    // if (newPhotoID == ""){
+    //   wx.showModal({
+    //     title: '您还没有上传照片，仍上传新品？',
+    //     success(res) {
+    //       if (res.confirm) {
+    //         console.log('用户确定不上传照片')
+    //       }else{
+    //         return
+    //       }
+    //     }
+    //   })
+    // }
+
+    //check if already exists
+    db.collection('dish').where({
+      dish_name: newName
+    }).get({
+      success: function (res) {
+        if (res.data.length > 0) {
+          console.log('菜品已存在', res)
+          wx.showModal({
+            title: '该菜品已被添加过',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                that.setData({
+                  cleanName: ''
+                })
+              }
+            }
+          })
+        }else{
+          //upload
+          wx.showLoading({
+            title: '新菜品图片上传中',
+          })
+          db.collection('dish').add({
+            data: {
+              dish_name: newName,
+              dish_price: newPrice,
+              dish_material: newMaterial,
+              dish_addTime: new Date().getTime(),
+              dish_photoID: newPhotoID
+            },
+            success: function (res) {
+              wx.showToast({
+                title: '添加成功!',
+              })
+              console.log('添加成功', res)
+            },
+            fail: function (res) {
+              wx.showToast({
+                title: '添加失败😭',
+              })
+              console.log('添加失败', res)
+            },
+            complete: () => {
+              wx.hideLoading()
+              that.setData({
+                cleanName: '',
+                ifDishPhoto: false
+              })
+            }
+          })
+        }
+        
+      }
+    })
+  },
+
+
+  //upload the photo for a new dish
+  doUploadDishPhoto: function(e) {
+    let that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        wx.showLoading({
+          title: '新菜品图片上传中',
+        })
+        const filePath = res.tempFilePaths[0]
+        const cloudPath = 'dish' + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+            that.setData({
+              newFileID: res.fileID,
+              newCloudPath: cloudPath,
+              ifDishPhoto:true
+            })
+            wx.showToast({
+              title: '图片上传成功',
+            })
+          },
+          fail: err => {
+            console.log('[上传文件] 失败：', res)
+            wx.showToast({
+              title: '图片上传失败',
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+      }
+    })
+  },
+
+  doUploadSwiperPhoto: function (e){
+    let that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        wx.showLoading({
+          title: '轮播图上传中',
+        })
+        const filePath = res.tempFilePaths[0]
+        const cloudPath = 'swiper' + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+            that.setData({
+              newSwiperID: res.fileID,
+           newSwiperCloudPath: cloudPath,
+           ifSwiperPhoto: true
+            })
+            wx.showToast({
+              title: '图片上传成功',
+            })
+          },
+          fai: err => {
+            console.log('[上传文件] 失败：', res)
+            wx.showToast({
+              title: '图片上传失败',
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+      }
+    })
+  },
+  addNewSwiperPhoto: function(e){
+    let that = this;
+    let newSwiperDiscription = e.detail.value.newSwiperDiscription
+    console.log('创建新品：', newSwiperDiscription);
+
+    const db = wx.cloud.database();
+    wx.showLoading({
+      title: '上传中',
+    })
+    db.collection('swiper').add({
+      data: {
+        discription: newSwiperDiscription,
+        addTime: new Date().getTime(),
+        swiperID: that.data.newSwiperID,
+        swiperCloudPath: that.data.newSwiperCloudPath
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '添加成功!',
+        })
+        console.log('添加轮播图成功', res)
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '添加失败😭',
+        })
+        console.log('添加轮播图失败', res)
+      },
+      complete: () => {
+        wx.hideLoading()
+        that.setData({
+          cleanName: '',
+          ifSwiperPhoto: false
+        })
+        }
+    })
+    
+  }
 })

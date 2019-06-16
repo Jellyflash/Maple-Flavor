@@ -1,5 +1,6 @@
 {
-  "pages": ["pages/discovery/discovery",
+  "pages": [
+    "pages/discovery/discovery",
     "pages/login/login",
     "pages/activity/activity",
     "pages/mine/mine",
