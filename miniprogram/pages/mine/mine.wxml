@@ -56,7 +56,7 @@
 
        <!-- choose category  -->
         <radio-group name="category">
-      <label wx:for='{{ dishCategory}}' class='categoryLabel'><radio value='{{item}}' checked='{{ifCheck}}'/>{{item}}</label>
+      <label wx:key="key" wx:for='{{ dishCategory}}' class='categoryLabel'><radio value='{{item}}' checked='{{ifCheck}}'/>{{item}}</label>
     </radio-group>
 
         <button wx:if="{{!ifDishPhoto}}" class='uploadPhoto' bindtap='doUploadDishPhoto'>上传图片</button>

@@ -20,23 +20,20 @@ Page({
       price: '￥10',
       foodInfo: '新鲜的水果和蔬菜~',
       index: 0,
-          }, {
-        foodTitle: '辛拉面',
-        foodImg: 'images/图片.png',
-        price: '￥10',
-        foodInfo: '好吃的拉面~',
-        index: 1,
+    }, {
+      foodTitle: '辛拉面',
+      foodImg: 'images/图片.png',
+      price: '￥10',
+      foodInfo: '好吃的拉面~',
+      index: 1,
     }],
 
     "arrow": "images/箭头.png",
     "newArrival": "images/新品白.png",
-    // "imageUrl1": "images/蔬菜沙拉.png",
-    // "imageUrl2": "images/米饭.png",
-    // "imageUrl3": "images/肉食.png",
   },
 
   // To change the page into the detail food information page
-  go: function (e) {
+  go: function(e) {
     var food = e.currentTarget.id;
     wx.navigateTo({
       url: '../new1/new1?food=' + food,
@@ -48,11 +45,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '发现',
     })
-
-    // this.getOpenid()
+    this.getSwiperPhoto()
   },
-
-  getOpenid: function () {
+  getSwiperPhoto: function() {
+    
+  },
+  getOpenid: function() {
     //call cloud function
     wx.cloud.callFunction({
       name: 'getID',
@@ -141,7 +139,7 @@ Page({
           grade: '',
           bookmark: []
         },
-        success: function (res) {
+        success: function(res) {
           wx.navigateTo({
             url: '../login/login',
           })
