@@ -21,27 +21,72 @@ Page({
       foodImg: 'images/图片.png',
       price: '￥10/份',
       index: 0,
+      star: false,
     }, {
       foodTitle: '辛拉面',
       foodImg: 'images/图片.png',
       price: '￥10/份',
       index: 1,
+      star: false,
     }],
 
     "content": [{
       username: '晴辣辣',
       commentContent: '好吃',
-      time: '5月23日 21:00'
+      time: '5月23日 21:00',
     }, {
         username: '阮健康',
         commentContent: '不好吃',
-        time: '5月29日 8:00'
+        time: '5月29日 8:00',
       }, {
         username: '晴甜甜',
         commentContent: '超好吃',
-        time: '5月26日 8:00'
+        time: '5月26日 8:00',
       }],
-
+   
+    "ingredient": [{
+      index: 0,
+      vegetable:[{
+        name: "白菜",
+      }, {
+        name: "胡萝卜",
+      }, {
+        name: "青椒",
+      }],
+      meat: [{
+        name: "鸡肉",
+      }, {
+        name: "牛肉",
+      }],
+      sauce: [{
+        name: "千岛酱",
+      }, {
+        name: "蛋黄酱",
+      }],
+      other: [{
+        name: "鸡蛋",
+      }, {
+        name: "蒜",
+      }]
+    },
+     {
+      index:1,
+       vegetable: [{
+         name: "无",
+       }, ],
+       meat: [{
+         name: "鸡肉",
+       }, {
+         name: "牛肉",
+       }],
+       sauce: [{
+         name: "千岛酱",
+       }],
+       other: [{
+         name: "鸡蛋",
+       }]
+    },
+    ],
     "share": "images/分享.png",
     "starBefore": "images/收藏.png",
     "starAfter": "images/收藏黄.png",
@@ -52,23 +97,38 @@ Page({
     "number": '150',
     "numberText": '人已评价',
     "cancel": '删除',
+    "sent": "发送",
+    "vegetext": "菜",
+    "meattext": "肉",
+    "saucetext": "酱料",
+    "othertext": "其他",
     "imageUrl7": "images/评分.png",
-    "imageUrl8": "images/菜.png",
-    "imageUrl9": "images/肉.png",
-    "imageUrl10": "images/酱料.png",
-    "imageUrl11": "images/鸡蛋.png",
+    "vegeImg": "images/菜.png",
+    "meatImg": "images/肉.png",
+    "sauceImg": "images/酱料.png",
+    "otherImg": "images/鸡蛋.png",
+
     current: 0,
     currentFood: -1,
     isCollected: false,
+    reviewHeight: 160,
+    reviewHeights:[],
   },
 
   // To check whether a user mark this page earlier and the food the user click on.
   onLoad: function (option) {
-    var postId = option.id;
-    this.data.currentPostId = postId;
+    var that = this;
+    that.setData({ currentFood: option.food });
+    var height = this.data.reviewHeight+(this.data.content.length) * 360;
+    var reviewHei=[];
+    reviewHei[0]= height;
+    reviewHei[1]= 500;
+    this.setData({
+      reviewHeights: reviewHei,
+    })
     var postsCollected = wx.getStorageSync('posts_collected')
     if (postsCollected) {
-      var postCollected = postsCollected[postId]
+      var postCollected = postsCollected[this.data.currentFood+1];
       this.setData({
         isCollected: postCollected
       })
@@ -77,16 +137,15 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync('posts_collected', postsCollected);
     }
-    var that=this;
-    that.setData({currentFood: option.food});
   },
 
   // To allow users remember the page by clicking         the star
   handleCollection: function (event) {
     var postsCollected = wx.getStorageSync('posts_collected');
-    var postCollected = postsCollected[this.data.currentPostId];
+    var postCollected = postsCollected[this.data.currentFood+1];
     postCollected = !postCollected;
-    postsCollected[this.data.currentPostId] = postCollected;
+    postsCollected[this.data.currentFood
+    +1] = postCollected;
     wx.setStorageSync('posts_collected', postsCollected);
     this.setData({
       isCollected: postCollected

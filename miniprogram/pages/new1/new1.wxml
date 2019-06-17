@@ -26,7 +26,7 @@
 </view>
 
 <!-- The swiper items following the two tab bars -->
-<swiper class='swiper' current="{{current}}" bindchange="swiperChange">
+<swiper class='swiper' current="{{current}}" bindchange="swiperChange" style="height:{{reviewHeights[current]}}rpx">
   <!-- The first swiper item-->
   <swiper-item>
     <!-- The review summary -->
@@ -62,43 +62,55 @@
 
   <!-- The second swiper item -->
   <swiper-item>
-    <view class="parallel">
-      <view class="withpic">
-        <view class="tit">菜\n
-          <view class="ingredients">• 白菜\n</view>
-          <view class="ingredients">• 胡萝卜\n</view>
-          <view class="ingredients">• 青椒\n</view>
+    <view wx:key="key" wx:for="{{ingredient}}" wx:if="{{currentFood==item.index}}">
+      <!-- The first row -->
+      <view class="alignment">
+        <!-- vegetable content -->
+        <view>
+          <view class="title">{{vegetext}}\n</view>
+          <image class="Img" src="{{vegeImg}}"></image>
+          <view wx:key="key" wx:for="{{item.vegetable}}">
+            <view class="ingredient">• {{item.name}}</view>
+          </view>
         </view>
-        <image class="img8" src="{{imageUrl8}}"></image>
+        <!-- meat content -->
+        <view>
+          <view class="title">{{meattext}}\n</view>
+          <image class="Img" src="{{meatImg}}"></image>
+          <view wx:key="key" wx:for="{{item.meat}}">
+            <view class="ingredient">• {{item.name}}</view>
+          </view>
+        </view>
       </view>
-      <view class="withpic">
-        <view class="tit">肉\n
-          <view class="ingredients">• 鸡肉\n</view>
+      <!-- The second row -->
+      <view class="alignment">
+        <!-- sauce content -->
+        <view>
+          <view class="title">{{saucetext}}\n</view>
+          <image class="Img" src="{{sauceImg}}"></image>
+          <view wx:key="key" wx:for="{{item.sauce}}">
+            <view class="ingredient">• {{item.name}}</view>
+          </view>
         </view>
-        <image class="img8" src="{{imageUrl9}}"></image>
-      </view>
-    </view>
-    <view class="parallel">
-      <view class="withpic">
-        <view class="tit">酱料\n
-          <view class="ingredients">• 千岛酱\n</view>
+        <!-- other content -->
+        <view>
+          <view class="title">{{othertext}}\n</view>
+          <image class="Img" src="{{otherImg}}"></image>
+          <view wx:key="key" wx:for="{{item.other}}">
+            <view class="ingredient">• {{item.name}}</view>
+          </view>
         </view>
-        <image class="img8" src="{{imageUrl10}}"></image>
-      </view>
-      <view class="withpic">
-        <view class="tit">其他\n
-          <view class="ingredients">• 鸡蛋\n</view>
-        </view>
-        <image class="img8" src="{{imageUrl11}}"></image>
       </view>
     </view>
   </swiper-item>
 </swiper>
+
+<!-- The comment box -->
 <form bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view class="replyinfo2">
       <textarea placeholder-class="input_null" fixed="true" show-confirm-bar="false" placeholder="请输入回复" name="comment"></textarea>
-      <button form-type="submit" class="submit">发送</button>
+      <button form-type="submit" class="submit">{{sent}}</button>
     </view>
   </view>
 </form>
