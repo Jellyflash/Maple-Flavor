@@ -9,7 +9,7 @@
 <!-- The food information of each category -->
 <swiper class="swiper" current="{{current}}" bindchange="swiperChange">
   <swiper-item wx:key="key" wx:for="{{menu}}">
-    <view class="card" bindtap='go'>
+    <view class="card" bindtap='go' id="{{item.index}}">
       <image class="foodImg" src="{{item.foodImg}}"></image>
       <view>
         <view class="foodTitle">{{item.foodTitle}}</view>
