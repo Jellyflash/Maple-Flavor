@@ -1,6 +1,6 @@
 <!-- The swiper on the top with three slides. -->
 <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
-  <block wx:for="{{swiperUrl}}" wx:for-index="index">
+  <block wx:for="{{swiperUrl}}" wx:for-index="index" wx:key="key">
     <swiper-item>
       <image src='{{item.url}}' class='slide'                         mode='aspectFill'></image>
     </swiper-item>
@@ -14,7 +14,8 @@
 </view>
 
 <!-- The information of the new arrived food  -->
-<view class="card" bindtap='go' wx:for="{{menu}}">
+<view wx:for="{{menu}}" wx:key="key">
+<view class="card" id="{{item.index}}" bindtap='go'>
   <image class="foodImg" src="{{item.foodImg}}"></image>
   <view>
     <view class="foodTitle">{{item.foodTitle}}</view>
@@ -22,4 +23,5 @@
     <view class="price">{{item.price}}</view>
   </view>
   <image class="arrow" src="{{arrow}}"></image>
+</view>
 </view>

@@ -1,20 +1,27 @@
-<!--pages/aboutus/aboutus.wxml-->
-<view class="back">
-  <view class="about">
-    <text class="aboutin">关于我们</text>
+<!-- The title -->
+<view class="titleDisplay">
+  <view class="title">
+    <text>{{title}}</text>
   </view>
 </view>
 
-<view class="total">
+<!-- The two blocks of texts -->
+<view class="wholeBlock">
+  <!-- The first block -->
   <view class="block1">
-    <view class="tit">我们是谁？</view>
-  </view>
-
+    <view class="smallTitle">{{smallTitle1}}</view>
+    <view class="whoAreWe">{{whoAreWe1}}</view>
+    <view class="whoAreWe">{{whoAreWe2}}</view>
+ </view>
+  <!-- The second block -->
   <view class="block2">
-    <view class="tit">我们为什么做？</view>
+  <view class="smallTitle">{{smallTitle2}}</view>
+  <view class="why">{{why1}}</view>
+    <view class="why">{{why2}}</view>
   </view>
 </view>
 
+<!-- <<<<<<< HEAD
 
 <view class="decorate">———————</view>
 <view class="decorate2">———————</view>
@@ -26,4 +33,10 @@
 <view class="block">
 
 </view>
+
+======= -->
+
+<!-- Two decorate green lines -->
+<view class="decorateLine1"></view>
+<view class="decorateLine2"></view>
 

@@ -229,3 +229,22 @@ page{
 radio-group{
   margin-top: 30rpx;
 }
+
+.iconTotal{
+  display: flex;
+  flex-direction: row;
+  margin-left: 60rpx;
+}
+.iconImg{
+  height: 80rpx;
+  width: 80rpx;
+}
+.iconName{
+  color: black;
+  font-size: 30rpx;
+  margin-left: 16rpx;
+}
+.icon{
+  margin-top: 20rpx;
+  margin-left: 60rpx;
+}

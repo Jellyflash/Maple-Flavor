@@ -6,15 +6,24 @@ const perpage = pages[pages.length - 1]
 
 Page({
   data: {
-    "imageUrl2": "images/背景2.png",
-    "imageUrl3": "images/金币.png",
-    "imageUrl4": "images/收藏2.png",
-    "imageUrl5": "images/帮助中心.png",
-    "imageUrl6": "images/关于我们.png",
-    "imageUrl7": "images/正方形1.png",
-    "imageUrl8": "images/正方形2.png",
-    "imageUrl9": "images/正方形3.png",
-    "imageUrl10": "images/正方形4.png",
+    "greenBack": "images/背景2.png",
+    "icon":[{
+      name: "金币",
+      img: "images/金币.png",
+      functionName: 'notOpen'
+    },{
+        name: "收藏",
+        img: "images/收藏2.png",
+      }, {
+        name: "帮助",
+        img: "images/帮助中心.png",
+        functionName:'address'
+      }, {
+        name: "关于",
+        img: "images/关于我们.png",
+        functionName:'go'
+      }],
+    "sent": "发送",
     dishCategory: ['西餐', '韩餐', '面食', '鲁菜', '清真'],
     msgData: [],
     inputVal: "",

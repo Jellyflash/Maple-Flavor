@@ -1,29 +1,18 @@
-<image class="background" src="{{imageUrl2}}"></image>
+<image class="background" src="{{greenBack}}"></image>
 <view class='container'>
   <view class="head">
     <view class="nametot">
       <image class="pic" src="{{avatar}}"></image>
       <text class='name'>{{name}}</text>
     </view>
-    <view class="navtot">
-      <view class="nav">
-        <image class="picnew" src="{{imageUrl3}}" bindtap="notOpen"></image>
-        <view class="captionnew" bindtap="notOpen">金币</view>
-      </view>
-      <view class="nav">
-        <image class="picnew" src="{{imageUrl4}}"></image>
-        <view class="captionnew">收藏</view>
-      </view>
-      <view class="nav">
-        <image class="picnew" src="{{imageUrl5}}" bindtap="address"></image>
-        <view class="captionnew" bindtap="address">帮助</view>
-      </view>
-      <view class="nav">
-        <image class="picnew" src="{{imageUrl6}}" bindtap="go"></image>
-        <view class="captionnew2" bindtap="go">关于我们</view>
-      </view>
+    <view class="iconTotal">
+    <view class="icon" wx:key="key" wx:for="{{icon}}">
+      <image class="iconImg" src="{{item.img}}" bindtap="{{item.functionName}}"></image>
+      <view class="iconName" bindtap="{{item.functionName}}">{{item.name}}</view>
     </view>
   </view>
+
+    </view>
 </view>
 
 

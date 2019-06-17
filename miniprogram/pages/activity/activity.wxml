@@ -1,6 +1,6 @@
 <!-- The horizontal scroll view of different categories of food -->
 <scroll-view class="scroll-view" scroll-x>
-  <view wx:for="{{scroll}}" data-current="{{index}}" bindtap="onTapTag" class="click-before {{current == index?'click-after':''}}">
+  <view wx:key="key" wx:for="{{scroll}}" data-current="{{index}}" bindtap="onTapTag" class="click-before {{current == index?'click-after':''}}">
     <image src='{{item.resImg}}'></image>
     <text>{{item.resName}}</text>
   </view>
@@ -8,7 +8,7 @@
 
 <!-- The food information of each category -->
 <swiper class="swiper" current="{{current}}" bindchange="swiperChange">
-  <swiper-item wx:for="{{menu}}">
+  <swiper-item wx:key="key" wx:for="{{menu}}">
     <view class="card" bindtap='go'>
       <image class="foodImg" src="{{item.foodImg}}"></image>
       <view>
