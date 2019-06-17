@@ -221,3 +221,11 @@ page{
   margin-top: 20rpx;
   width: 590rpx;
 }
+
+.categoryLabel{
+  margin-right: 50rpx;
+}
+
+radio-group{
+  margin-top: 30rpx;
+}

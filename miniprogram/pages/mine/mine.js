@@ -15,6 +15,7 @@ Page({
     "imageUrl8": "images/正方形2.png",
     "imageUrl9": "images/正方形3.png",
     "imageUrl10": "images/正方形4.png",
+    dishCategory: ['西餐', '韩餐', '面食', '鲁菜', '清真'],
     msgData: [],
     inputVal: "",
     avatar: '',
@@ -25,10 +26,11 @@ Page({
     cleanName: '',
     newFileID: '',
     newCloudPath: '',
-    ifDishPhoto:false,
-    newSwiperID:'',
-    newSwiperCloudPath:'',
-    ifSwiperPhoto: false
+    ifDishPhoto: false,
+    newSwiperID: '',
+    newSwiperCloudPath: '',
+    ifSwiperPhoto: false,
+    ifCheck: false
   },
 
   onLoad: function(options) {
@@ -134,80 +136,88 @@ Page({
   //create a new dish in database
   createNewDish: function(e) {
     let that = this;
+    console.log(e.detail.value);
     let newName = e.detail.value.newName
     let newPrice = e.detail.value.newPrice
     let newMaterial = e.detail.value.newMaterial
     let newPhotoID = that.data.newFileID
-    console.log('创建新品：', newName, newPrice, newMaterial, newPhotoID);
+    let newDishCategory = e.detail.value.category
+    console.log('创建新品：', newName, newPrice, newMaterial, newDishCategory, newPhotoID);
     const db = wx.cloud.database();
-    // if (newPhotoID == ""){
-    //   wx.showModal({
-    //     title: '您还没有上传照片，仍上传新品？',
-    //     success(res) {
-    //       if (res.confirm) {
-    //         console.log('用户确定不上传照片')
-    //       }else{
-    //         return
-    //       }
-    //     }
-    //   })
-    // }
+    if (newPhotoID == "") {
+      wx.showModal({
+        title: '您还没有上传照片',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户确定不上传照片')
+          }
+        }
+      })
+    } else {
 
-    //check if already exists
-    db.collection('dish').where({
-      dish_name: newName
-    }).get({
-      success: function (res) {
-        if (res.data.length > 0) {
-          console.log('菜品已存在', res)
-          wx.showModal({
-            title: '该菜品已被添加过',
-            success(res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
+      //check if already exists
+      db.collection('dish').where({
+        dish_name: newName
+      }).get({
+        success: function(res) {
+          wx.showLoading({
+            title: '检查数据库中',
+          })
+          if (res.data.length > 0) {
+            console.log('菜品已存在', res)
+            wx.showModal({
+              title: '该菜品已被添加过',
+              showCancel: false,
+              success(res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                  that.setData({
+                    cleanName: ''
+                  })
+                }
+              }
+            })
+          } else {
+            //upload
+            wx.showLoading({
+              title: '菜品添加中',
+            })
+            db.collection('dish').add({
+              data: {
+                dish_name: newName,
+                dish_price: newPrice,
+                dish_material: newMaterial,
+                dish_addTime: new Date().getTime(),
+                dish_category: newDishCategory,
+                dish_photoID: newPhotoID
+              },
+              success: function(res) {
+                wx.showToast({
+                  title: '添加成功!',
+                })
+                console.log('添加成功', res)
+              },
+              fail: function(res) {
+                wx.showToast({
+                  title: '添加失败😭',
+                })
+                console.log('添加失败', res)
+              },
+              complete: () => {
+                wx.hideLoading()
                 that.setData({
-                  cleanName: ''
+                  cleanName: '',
+                  ifDishPhoto: false,
+
                 })
               }
-            }
-          })
-        }else{
-          //upload
-          wx.showLoading({
-            title: '新菜品图片上传中',
-          })
-          db.collection('dish').add({
-            data: {
-              dish_name: newName,
-              dish_price: newPrice,
-              dish_material: newMaterial,
-              dish_addTime: new Date().getTime(),
-              dish_photoID: newPhotoID
-            },
-            success: function (res) {
-              wx.showToast({
-                title: '添加成功!',
-              })
-              console.log('添加成功', res)
-            },
-            fail: function (res) {
-              wx.showToast({
-                title: '添加失败😭',
-              })
-              console.log('添加失败', res)
-            },
-            complete: () => {
-              wx.hideLoading()
-              that.setData({
-                cleanName: '',
-                ifDishPhoto: false
-              })
-            }
-          })
+            })
+          }
+
         }
-        
-      }
-    })
+      })
+    }
+
   },
 
 
@@ -232,7 +242,7 @@ Page({
             that.setData({
               newFileID: res.fileID,
               newCloudPath: cloudPath,
-              ifDishPhoto:true
+              ifDishPhoto: true
             })
             wx.showToast({
               title: '图片上传成功',
@@ -252,13 +262,13 @@ Page({
     })
   },
 
-  doUploadSwiperPhoto: function (e){
+  doUploadSwiperPhoto: function(e) {
     let that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
         wx.showLoading({
           title: '轮播图上传中',
         })
@@ -271,8 +281,8 @@ Page({
             console.log('[上传文件] 成功：', res)
             that.setData({
               newSwiperID: res.fileID,
-           newSwiperCloudPath: cloudPath,
-           ifSwiperPhoto: true
+              newSwiperCloudPath: cloudPath,
+              ifSwiperPhoto: true
             })
             wx.showToast({
               title: '图片上传成功',
@@ -291,7 +301,7 @@ Page({
       }
     })
   },
-  addNewSwiperPhoto: function(e){
+  addNewSwiperPhoto: function(e) {
     let that = this;
     let newSwiperDiscription = e.detail.value.newSwiperDiscription
     console.log('创建新品：', newSwiperDiscription);
@@ -307,13 +317,13 @@ Page({
         swiperID: that.data.newSwiperID,
         swiperCloudPath: that.data.newSwiperCloudPath
       },
-      success: function (res) {
+      success: function(res) {
         wx.showToast({
           title: '添加成功!',
         })
         console.log('添加轮播图成功', res)
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showToast({
           title: '添加失败😭',
         })
@@ -325,8 +335,8 @@ Page({
           cleanName: '',
           ifSwiperPhoto: false
         })
-        }
+      }
     })
-    
+
   }
 })

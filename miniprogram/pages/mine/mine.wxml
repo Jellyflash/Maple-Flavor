@@ -64,6 +64,12 @@
         <input name='newName' class='managerInput' placeholder='新品名称' value='{{cleanName}}'></input>
         <input name='newPrice' class='managerInput' placeholder='新品价格¥' value='{{cleanName}}'></input>
         <input name='newMaterial' class='managerInput' placeholder='原材料' value='{{cleanName}}'></input>
+
+       <!-- choose category  -->
+        <radio-group name="category">
+      <label wx:for='{{ dishCategory}}' class='categoryLabel'><radio value='{{item}}' checked='{{ifCheck}}'/>{{item}}</label>
+    </radio-group>
+
         <button wx:if="{{!ifDishPhoto}}" class='uploadPhoto' bindtap='doUploadDishPhoto'>上传图片</button>
         <image wx:else src='{{newFileID}}' class='dishImage'> </image>
         <view class='buttonComb1'>
