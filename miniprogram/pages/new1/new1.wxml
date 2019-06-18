@@ -5,11 +5,12 @@
   <image class="foodImg" src="{{currentFood.dish_photoID}}"></image>
   <view class="titleBackground">
     <view class='foodTitle'>{{currentFood.dish_name}}</view>
-    <view class='price'>{{currentFood.dish_price}}</view>
+    <view class='price'>¥{{currentFood.dish_price}}</view>
+
     <!-- The star and share button on the top right -->
     <view class="iconArray">
-      <image class="icon" id='0' catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{starBefore}}"></image>
-      <image class="icon" id='1' catchtap='handleCollection' wx:if='{{isCollected}}' src="{{starAfter}}"></image>
+      <image class="icon" id='0' catchtap='addBookmark' wx:if='{{!bookmark}}' src="{{starBefore}}"></image>
+      <image class="icon" id='1' catchtap='deleteBookmark' wx:if='{{bookmark}}' src="{{starAfter}}"></image>
       <image class="icon" src="{{share}}"></image>
       <button open-type='share' plain='true' class="shareButton"></button>
     </view>

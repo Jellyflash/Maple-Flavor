@@ -1,17 +1,18 @@
 /* The picture and title on the top */
 .foodImg{
-  width: 670rpx;
+  /* width: 670rpx;
   height: 350rpx;
   margin-left: 40rpx;
   margin-right: 40rpx;
-  margin-top: 40rpx;
+  margin-top: 40rpx; */
+  width: 100%;
   z-index: -1;
 }
 .titleBackground{
   background-color: #686363;
   width: 100%;
   height: 140rpx;
-  margin-top: -110rpx;
+  /* margin-top: -110rpx; */
   display: flex;
   flex-direction: row;
 }

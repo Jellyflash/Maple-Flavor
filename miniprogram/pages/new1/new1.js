@@ -1,5 +1,5 @@
 // pages/new1/new1.js
-
+const app = getApp()
 const db = wx.cloud.database();
 
 Page({
@@ -114,9 +114,9 @@ Page({
     current: 0,
     currentFoodID: "",
     currentFood:"",
-    isCollected: false,
     reviewHeight: 160,
     reviewHeights:[],
+    bookmark:false
   },
 
   // To check whether a user mark this page earlier and the food the user click on.
@@ -133,6 +133,7 @@ Page({
         })
       }
     })
+    this.checkIfBookmark()
 
 
     // var height = this.data.reviewHeight+(this.data.content.length) * 360;
@@ -155,23 +156,70 @@ Page({
     // }
   },
 
-  // To allow users remember the page by clicking         the star
-  handleCollection: function (event) {
-    var postsCollected = wx.getStorageSync('posts_collected');
-    var postCollected = postsCollected[this.data.currentFood+1];
-    postCollected = !postCollected;
-    postsCollected[this.data.currentFood
-    +1] = postCollected;
-    wx.setStorageSync('posts_collected', postsCollected);
-    this.setData({
-      isCollected: postCollected
-    })
-    wx.showToast({
-      title: postCollected ? "收藏成功" : "取消成功",
-      duration: 1000,
-      icon: "success",
+  checkIfBookmark:function(e){
+    let that = this
+    console.log('检查数据库',app.globalData.role)
+    db.collection(app.globalData.role).where({
+      _openid: app.globalData.openid,
+      bookmark:this.data.currentFoodID
+    }).get({
+      success: function (res) {
+        console.log('检查bookmark',res)
+        if(res.data.length>0){
+          that.setData({
+            bookmark: true
+          })
+        }
+      }
     })
   },
+
+  // To allow users remember the page by clicking the star
+  addBookmark:function(e){
+    console.log('收藏', this.data.currentFoodID)
+    let that = this
+    db.collection(app.globalData.role).doc(app.globalData.weChatID).update({
+      data: {
+        bookmark: db.command.push(this.data.currentFoodID)
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '添加收藏成功!',
+        })
+        console.log('添加收藏成功', res)
+        that.setData({
+          bookmark: true
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '添加收藏失败😭',
+        })
+        console.log('添加收藏失败', res)
+      },
+      complete: () => {
+        wx.hideLoading()
+      }
+    })
+  },
+
+
+  // handleCollection: function (event) {
+  //   var postsCollected = wx.getStorageSync('posts_collected');
+  //   var postCollected = postsCollected[this.data.currentFood+1];
+  //   postCollected = !postCollected;
+  //   postsCollected[this.data.currentFood
+  //   +1] = postCollected;
+  //   wx.setStorageSync('posts_collected', postsCollected);
+  //   this.setData({
+  //     isCollected: postCollected
+  //   })
+  //   wx.showToast({
+  //     title: postCollected ? "收藏成功" : "取消成功",
+  //     duration: 1000,
+  //     icon: "success",
+  //   })
+  // },
 
   //To enable users to change page by clickng on the     two items
   barChange: function (e) {

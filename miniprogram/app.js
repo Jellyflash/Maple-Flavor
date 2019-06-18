@@ -4,11 +4,13 @@ App({
   //全局数据
   globalData: {
     //用户ID
-    openId: '',
+    weChatID:'',
+    openid: '',
     //用户信息
     avatar: 'images/圆.png',
     name: '路人甲',
-    manager: false
+    manager: false,
+    role:'user'
   },
   /**
    * 检查云开发环境并初始化
@@ -40,7 +42,7 @@ App({
   },
 
   //check if the user already exists
-  checkStudent() {
+  checkNormalUser() {
     console.log('print', this.globalData.openid)
     const db = wx.cloud.database()
       //check common user
@@ -67,12 +69,14 @@ App({
     }).get({
       success: res => {
         console.log("查询manager", res)
-        if (res.data.length > 0) {
+        if (res.data.length >0) {
           this.globalData.manager = true
-          console.log('Manager', this.globalData.manager)
+          this.globalData.role = 'manager'
+          this.globalData.weChatID = res.data[0]._id
+          console.log('Manager', this.globalData.manager, this.globalData.openid, this.globalData.weChatID)
           this.getInformation()
         }else{
-          this.checkStudent()
+          this.checkNormalUser()
         }
       },
       fail: err => {

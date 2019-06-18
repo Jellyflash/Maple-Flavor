@@ -8,8 +8,8 @@ exports.main = (event, context) => {
   console.log(event)
   console.log(context)
   // 获取用户openid，event 参数包含小程序端调用传入的 data
+  
   const wxContext = cloud.getWXContext()
-
   return {
     event,
     openid: wxContext.OPENID,
