@@ -1,4 +1,5 @@
 {
+  "cloud":true,
   "pages": [
     "pages/discovery/discovery",
     "pages/login/login",

@@ -1,10 +1,11 @@
 <!-- The top part above the swiper -->
-<view wx:key="key" wx:for="{{menu}}" wx:if="{{currentFood==item.index}}">
+<!-- <view wx:key="key" wx:for="{{menu}}" wx:if="{{currentFood==item.index}}"> -->
+<view>
   <!-- The title and picture part on the top -->
-  <image class="foodImg" src="{{item.foodImg}}"></image>
+  <image class="foodImg" src="{{currentFood.dish_photoID}}"></image>
   <view class="titleBackground">
-    <view class='foodTitle'>{{item.foodTitle}}</view>
-    <view class='price'>{{item.price}}</view>
+    <view class='foodTitle'>{{currentFood.dish_name}}</view>
+    <view class='price'>{{currentFood.dish_price}}</view>
     <!-- The star and share button on the top right -->
     <view class="iconArray">
       <image class="icon" id='0' catchtap='handleCollection' wx:if='{{!isCollected}}' src="{{starBefore}}"></image>

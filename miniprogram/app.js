@@ -8,7 +8,7 @@ App({
     //用户信息
     avatar: 'images/圆.png',
     name: '路人甲',
-    manager: true
+    manager: false
   },
   /**
    * 检查云开发环境并初始化

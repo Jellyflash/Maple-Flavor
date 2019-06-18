@@ -1,4 +1,7 @@
 // pages/new1/new1.js
+
+const db = wx.cloud.database();
+
 Page({
 
   /**
@@ -109,7 +112,8 @@ Page({
     "otherImg": "images/鸡蛋.png",
 
     current: 0,
-    currentFood: -1,
+    currentFoodID: "",
+    currentFood:"",
     isCollected: false,
     reviewHeight: 160,
     reviewHeights:[],
@@ -117,26 +121,38 @@ Page({
 
   // To check whether a user mark this page earlier and the food the user click on.
   onLoad: function (option) {
-    var that = this;
-    that.setData({ currentFood: option.food });
-    var height = this.data.reviewHeight+(this.data.content.length) * 360;
-    var reviewHei=[];
-    reviewHei[0]= height;
-    reviewHei[1]= 500;
-    this.setData({
-      reviewHeights: reviewHei,
+    console.log('菜品ID',option.food)
+    this.setData({ currentFoodID: option.food });
+    db.collection('dish').where({
+      _id: this.data.currentFoodID
+    }).get({
+      success:res=>{
+        console.log('菜品获取成功',res)
+        this.setData({
+          currentFood: res.data[0]
+        })
+      }
     })
-    var postsCollected = wx.getStorageSync('posts_collected')
-    if (postsCollected) {
-      var postCollected = postsCollected[this.data.currentFood+1];
-      this.setData({
-        isCollected: postCollected
-      })
-    } else {
-      var postsCollected = {};
-      postsCollected[postId] = false;
-      wx.setStorageSync('posts_collected', postsCollected);
-    }
+
+
+    // var height = this.data.reviewHeight+(this.data.content.length) * 360;
+    // var reviewHei=[];
+    // reviewHei[0]= height;
+    // reviewHei[1]= 500;
+    // this.setData({
+    //   reviewHeights: reviewHei,
+    // })
+    // var postsCollected = wx.getStorageSync('posts_collected')
+    // if (postsCollected) {
+    //   var postCollected = postsCollected[this.data.currentFood+1];
+    //   this.setData({
+    //     isCollected: postCollected
+    //   })
+    // } else {
+    //   var postsCollected = {};
+    //   postsCollected[postId] = false;
+    //   wx.setStorageSync('posts_collected', postsCollected);
+    // }
   },
 
   // To allow users remember the page by clicking         the star

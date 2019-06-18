@@ -1,7 +1,5 @@
 const app = getApp()
-
-const pages = getCurrentPages()
-const perpage = pages[pages.length - 1]
+const db = wx.cloud.database();
 // perpage.onLoad() 
 
 Page({
@@ -97,17 +95,21 @@ Page({
     let that = this;
     let searchDishName = e.detail.value.searchDishName;
     console.log('查询菜品名称：', searchDishName);
-    const db = wx.cloud.database();
+   
+    wx.showLoading({
+      title: '查询中',
+    })
     db.collection('dish').where({
       dish_name: searchDishName
     }).get({
       success: function(res) {
         if (res.data.length > 0) {
           console.log('查询菜品成功', res)
-          let dishInfo = res
+          let dishData = res.data[0]
+          let dishInfo = dishData.dish_name + ' ' + dishData.dish_category + ' ' + dishData.dish_material
           wx.showModal({
             title: '菜品信息',
-            content: res,
+            content: dishInfo,
             showCancel: false,
             success(res) {
               if (res.confirm) {
@@ -128,15 +130,22 @@ Page({
             }
           })
         }
-        that.setData({
-          cleanName: ''
-        })
       },
       fail: function(err) {
         console.log('查询失败', err)
         wx.showToast({
           icon: 'none',
           title: '查询失败，请检查网络设置'
+        })
+      },
+      complete: () => {
+        that.setData({
+          cleanName: ''
+        })
+        wx.hideLoading()
+        that.setData({
+          cleanName: '',
+          ifDishPhoto: false,
         })
       }
     })
@@ -152,7 +161,6 @@ Page({
     let newPhotoID = that.data.newFileID
     let newDishCategory = e.detail.value.category
     console.log('创建新品：', newName, newPrice, newMaterial, newDishCategory, newPhotoID);
-    const db = wx.cloud.database();
     if (newPhotoID == "") {
       wx.showModal({
         title: '您还没有上传照片',
@@ -196,7 +204,7 @@ Page({
                 dish_name: newName,
                 dish_price: newPrice,
                 dish_material: newMaterial,
-                dish_addTime: new Date().getTime(),
+                dish_addTime: new Date(),
                 dish_category: newDishCategory,
                 dish_photoID: newPhotoID
               },
@@ -282,7 +290,7 @@ Page({
           title: '轮播图上传中',
         })
         const filePath = res.tempFilePaths[0]
-        const cloudPath = 'swiper' + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath = 'swiper' + new Date().getTime()+ filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
@@ -314,15 +322,13 @@ Page({
     let that = this;
     let newSwiperDiscription = e.detail.value.newSwiperDiscription
     console.log('创建新品：', newSwiperDiscription);
-
-    const db = wx.cloud.database();
     wx.showLoading({
       title: '上传中',
     })
     db.collection('swiper').add({
       data: {
         discription: newSwiperDiscription,
-        addTime: new Date().getTime(),
+        addTime: new Date(),
         swiperID: that.data.newSwiperID,
         swiperCloudPath: that.data.newSwiperCloudPath
       },
