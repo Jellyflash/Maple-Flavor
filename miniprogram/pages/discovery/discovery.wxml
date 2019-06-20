@@ -20,7 +20,7 @@
   <view>
     <view class="foodTitle">{{item.dish_name}}</view>
     <view class="foodInfo">{{item.dish_category}}</view>
-    <view class="price">{{item.dish_price}}</view>
+    <view class="price"> ¥ {{item.dish_price}}</view>
   </view>
   <image class="arrow" src="{{arrow}}"></image>
 </view>

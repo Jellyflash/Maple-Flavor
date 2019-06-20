@@ -24,6 +24,11 @@ Page({
     menu:[],
     arrow: "images/箭头.png",
     newArrival: "images/新品白.png",
+    
+  },
+  onPullDownRefresh: function () {
+    this.onShow()
+    wx.stopPullDownRefresh()
   },
 
   // To change the page into the detail food information page
@@ -39,7 +44,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '发现',
     })
-    // this.getOpenid()
   },
 
   //to get the newest information for swiper and dish list

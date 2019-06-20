@@ -1,11 +1,11 @@
 <!-- The top part above the swiper -->
-<!-- <view wx:key="key" wx:for="{{menu}}" wx:if="{{currentFood==item.index}}"> -->
-<view>
+
+<view class='foodCombine'>
   <!-- The title and picture part on the top -->
   <image class="foodImg" src="{{currentFood.dish_photoID}}"></image>
   <view class="titleBackground">
     <view class='foodTitle'>{{currentFood.dish_name}}</view>
-    <view class='price'>¥{{currentFood.dish_price}}</view>
+    <view class='price'>¥ {{currentFood.dish_price}}</view>
 
     <!-- The star and share button on the top right -->
     <view class="iconArray">
@@ -16,6 +16,7 @@
     </view>
   </view>
 </view>
+
 
 <!-- The display of the two tab bars -->
 <view class='tabBar'>
@@ -28,33 +29,34 @@
 </view>
 
 <!-- The swiper items following the two tab bars -->
-<swiper class='swiper' current="{{current}}" bindchange="swiperChange" style="height:{{reviewHeights[current]}}rpx">
+<swiper class='swiper' current="{{current}}" bindchange="swiperChange" style='height:{{adjustHeight}}'>
   <!-- The first swiper item-->
   <swiper-item>
     <!-- The review summary -->
     <view class="wholeReview">
-      <text class="sum">{{number}}{{numberText}}</text>
+      <text class="sum">{{commentNumber}}{{numberText}}</text>
       <view class="ratingDisplay">
         <view wx:key="key" wx:for="{{review}}">
           <image class="rectangle" src="{{greenRectangle}}"></image>
-          <text class="rating">{{item.rating}}{{item.number}}</text>
+          <text class="rating">{{item.rating}}   {{item.number}}</text>
         </view>
       </view>
+
       <!-- The review content at the bottom -->
       <view class="margin"></view>
-      <view class="reviewBackground" wx:key="key" wx:for="{{content}}">
+      <view class="reviewBackground" wx:key="key" wx:for="{{currentFood.dish_comment}}">
         <!-- The head of a review -->
         <view class="review">
-          <image class="profilePhoto" src="{{profilePhoto}}" mode="aspectFit"></image>
+          <image class="profilePhoto" src="{{item.userAvatar}}" mode="aspectFit"></image>
           <view class="nameDisplay">
-            <view class="username">{{item.username}}</view>
+            <view class="username">{{item.userName}}</view>
           </view>
           <!-- The content and information of a review -->
           <view class="add-commentDisplay">
-            <view class="add-comment">{{item.commentContent}}</view>
+            <view class="add-comment">{{item.content}}</view>
           </view>
           <view class="time">
-            <text decode="true">{{item.time}}</text>
+            <text decode="true">{{item.addTime}}</text>
             <button form-type="deleteComment" class="cancel">{{cancel}}</button>
           </view>
         </view>
@@ -62,56 +64,20 @@
     </view>
   </swiper-item>
 
+
+
   <!-- The second swiper item -->
   <swiper-item>
-    <view wx:key="key" wx:for="{{ingredient}}" wx:if="{{currentFood==item.index}}">
-      <!-- The first row -->
-      <view class="alignment">
-        <!-- vegetable content -->
-        <view>
-          <view class="title">{{vegetext}}\n</view>
-          <image class="Img" src="{{vegeImg}}"></image>
-          <view wx:key="key" wx:for="{{item.vegetable}}">
-            <view class="ingredient">• {{item.name}}</view>
-          </view>
-        </view>
-        <!-- meat content -->
-        <view>
-          <view class="title">{{meattext}}\n</view>
-          <image class="Img" src="{{meatImg}}"></image>
-          <view wx:key="key" wx:for="{{item.meat}}">
-            <view class="ingredient">• {{item.name}}</view>
-          </view>
-        </view>
-      </view>
-      <!-- The second row -->
-      <view class="alignment">
-        <!-- sauce content -->
-        <view>
-          <view class="title">{{saucetext}}\n</view>
-          <image class="Img" src="{{sauceImg}}"></image>
-          <view wx:key="key" wx:for="{{item.sauce}}">
-            <view class="ingredient">• {{item.name}}</view>
-          </view>
-        </view>
-        <!-- other content -->
-        <view>
-          <view class="title">{{othertext}}\n</view>
-          <image class="Img" src="{{otherImg}}"></image>
-          <view wx:key="key" wx:for="{{item.other}}">
-            <view class="ingredient">• {{item.name}}</view>
-          </view>
-        </view>
-      </view>
-    </view>
+    <view class='ingredient'>{{currentFood.dish_material}}</view>
   </swiper-item>
 </swiper>
 
 <!-- The comment box -->
-<form bindsubmit="submitForm" report-submit="true">
+<form bindsubmit="submitDishComment">
   <view class="release">
     <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true" show-confirm-bar="false" placeholder="请输入回复" name="comment"></textarea>
+      <!-- <textarea placeholder-class="input_null" fixed="true" show-confirm-bar="false" placeholder="请输入回复" name="comment" value='{{cleanName}}'></textarea> -->
+      <textarea placeholder-class="input_null" fixed="true" show-confirm-bar="false" placeholder="请输入回复" name="comment" value='{{cleanName}}'></textarea>
       <button form-type="submit" class="submit">{{sent}}</button>
     </view>
   </view>

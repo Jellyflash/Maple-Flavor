@@ -1,0 +1,11 @@
+<view wx:for="{{menu}}" wx:key="key">
+<view class="card" id="{{item._id}}" bindtap='go'>
+  <image class="foodImg" src="{{item.dish_photoID}}"></image>
+  <view>
+    <view class="foodTitle">{{item.dish_name}}</view>
+    <view class="foodInfo">{{item.dish_category}}</view>
+    <view class="price">{{item.dish_price}}</view>
+  </view>
+  <image class="arrow" src="{{arrow}}"></image>
+</view>
+</view>

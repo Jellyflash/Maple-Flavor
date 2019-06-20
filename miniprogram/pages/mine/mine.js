@@ -12,6 +12,7 @@ Page({
     },{
         name: "收藏",
         img: "images/收藏2.png",
+        functionName: 'goBookmark'
       }, {
         name: "帮助",
         img: "images/帮助中心.png",
@@ -19,7 +20,7 @@ Page({
       }, {
         name: "关于",
         img: "images/关于我们.png",
-        functionName:'go'
+        functionName:'goAbout'
       }],
     "sent": "发送",
     dishCategory: ['西餐', '韩餐', '面食', '鲁菜', '清真'],
@@ -78,12 +79,16 @@ Page({
     })
   },
 
-  go: function() {
+  goAbout: function() {
     wx.navigateTo({
       url: '../aboutus/aboutus',
     })
   },
-
+  goBookmark: function () {
+    wx.navigateTo({
+      url: '../bookmark/bookmark',
+    })
+  },
   changeInputValue(ev) {
     this.setData({
       inputVal: ev.detail.value

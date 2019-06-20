@@ -65,7 +65,7 @@
 }
 
 .foodInfo{
-  color:#DDDDDD;
+  color:grey;
   font-size: 30rpx;
   margin-top: 90rpx;
   margin-left: 50rpx;
