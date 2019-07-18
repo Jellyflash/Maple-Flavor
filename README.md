@@ -32,6 +32,8 @@ The Mine page will display a form where users can give suggestions to help us be
 ##### Manager
 The Mine page will display mainly three blocks where managers can search dishes, add new dishes, and upload swiper posters to the WeChat Cloud database. We will also add more features like modify and delete to the manager page during this summer holiday.
 
+## Video Demo
+[Version 1.0 on YouTube](https://www.youtube.com/watch?v=St68fdVTh9s&t=4s)
 
 
 
